@@ -1,0 +1,21 @@
+syntax = 'proto3';
+
+import "app/example/storage/example/example.proto";
+
+option java_package = "app.example.proto.feed";
+option java_multiple_files = true;
+
+message Feed {
+  repeated Example example = 1;
+}
+
+message GetFeedRequest {
+}
+
+message GetFeedResponse {
+  Feed feed = 1;
+}
+
+service FeedService {
+  rpc GetFeed (GetFeedRequest) returns (GetFeedResponse) {}
+}

@@ -1,0 +1,126 @@
+module(
+    name = "logos-app-template",
+    version = "0.0.1",
+)
+
+use_extension("@bazel_tools//tools/module_profiles:git.bzl", "git_override")
+
+bazel_dep(name = "logos", version = "0.0.1")
+
+#git_override(
+#    module_name = "logos",
+#    remote = "git@github.com:logos-devs/logos.git",
+#    commit = "9fac6fe75265ea4ff0d57ccc0fd568b8ce7bed3e",
+#    init_submodules = True
+#)
+
+#logos = use_extension("@logos//:extension.bzl", "logos_deps")
+#use_repo(logos, maven="maven", logos_npm="npm")
+
+local_path_override(
+    module_name = "logos",
+    path = "/home/trinque/src/logos",
+)
+
+# aspect_bazel_lib
+bazel_dep(
+    name = "aspect_bazel_lib",
+    version = "2.7.7",
+)
+
+# grpc-java
+bazel_dep(name = "grpc-java", version = "1.62.2", repo_name = "io_grpc_grpc_java")
+
+# pnpm
+bazel_dep(name = "rules_nodejs", version = "5.8.2")
+bazel_dep(name = "aspect_rules_js", version = "1.42.3")
+
+node = use_extension("@rules_nodejs//nodejs:extensions.bzl", "node")
+node.toolchain()
+
+npm = use_extension(
+    "@aspect_rules_js//npm:extensions.bzl",
+    "npm",
+    dev_dependency = True,
+)
+npm.npm_translate_lock(
+    name = "npm",
+    pnpm_lock = "//:pnpm-lock.yaml",
+    verify_node_modules_ignored = "//:.bazelignore",
+)
+use_repo(npm, "npm")
+
+pnpm = use_extension("@aspect_rules_js//npm:extensions.bzl", "pnpm")
+use_repo(pnpm, "pnpm")
+
+bazel_dep(
+    name = "aspect_rules_ts",
+    version = "2.4.2",
+)
+
+rules_ts_ext = use_extension(
+    "@aspect_rules_ts//ts:extensions.bzl",
+    "ext",
+    dev_dependency = True,
+)
+rules_ts_ext.deps()
+use_repo(rules_ts_ext, "npm_typescript")
+
+# protobuf
+bazel_dep(name = "protobuf", version = "23.1", repo_name = "com_google_protobuf")
+
+
+# rules_jvm_external
+bazel_dep(name = "rules_jvm_external", version = "6.2")
+
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+maven.install(
+    artifacts = [
+        "com.auth0:java-jwt:4.4.0",
+        "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.15.2",
+        "com.google.code.gson:gson:2.10.1",
+        "com.google.inject:guice:7.0.0",
+        "com.mysema.commons:mysema-commons-lang:0.2.4",
+        "com.squareup:javapoet:1.13.0",
+        "com.twilio.sdk:twilio:10.2.1",
+        "com.yubico:webauthn-server-core:2.5.0",
+        "com.zaxxer:HikariCP:5.0.1",
+        "dnsjava:dnsjava:3.5.2",
+        "io.jsonwebtoken:jjwt:0.12.3",
+        "javax.annotation:javax.annotation-api:1.3.2",
+        "javax.json:javax.json-api:1.1.4",
+        "org.antlr:antlr4-runtime:4.13.0",
+        "org.apache.httpcomponents.client5:httpclient5:5.2.2",
+        "org.eclipse.jgit:org.eclipse.jgit:6.6.0.202305301015-r",
+        "org.jdbi:jdbi3-core:3.39.1",
+        "org.jdbi:jdbi3-postgres:3.35.0",
+        "org.junit.jupiter:junit-jupiter-api:5.9.3",
+        "org.postgresql:postgresql:42.6.0",
+        "org.reactivestreams:reactive-streams:1.0.4",
+        "org.reflections:reflections:0.10.2",
+        "org.slf4j:slf4j-api:2.0.7",
+        "org.slf4j:slf4j-simple:2.0.7",
+        "software.amazon.awssdk:auth:2.20.102",
+        "software.amazon.awssdk:cognitoidentityprovider:2.20.102",
+        "software.amazon.awssdk:ec2:2.20.102",
+        "software.amazon.awssdk:rds:2.20.102",
+        "software.amazon.awssdk:regions:2.20.102",
+        "software.amazon.awssdk:s3:2.20.102",
+        "software.amazon.awssdk:secretsmanager:2.20.102",
+        "software.amazon.awssdk:sso:2.20.102",
+        "software.amazon.awssdk:ssooidc:2.20.102",
+        "software.amazon.awssdk:sts:2.20.102",
+        "software.amazon.awssdk:utils:2.20.102",
+    ],
+    fail_if_repin_required = True,
+    fetch_javadoc = True,
+    fetch_sources = True,
+    generate_compat_repositories = True,
+    # bazel run @unpinned_maven//:pin
+    lock_file = "//:maven_install.json",
+    repositories = [
+        "https://repo.maven.apache.org/maven2/",
+    ],
+    version_conflict_policy = "pinned",
+)
+use_repo(maven, "maven")
