@@ -1,20 +1,28 @@
-load("@logos//bzl:ts.bzl", "ts_library")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 
-ts_library(
+ts_project(
     name = "web",
     srcs = glob(["**/*.ts"]) + [
         #"@logos//dev/logos/stack/aws:cognito_public_host_map",
     ],
-    visibility = ["//dev/logos/service/client/web:__pkg__"],
+    composite = True,
+    declaration = True,
+    resolve_json_module = True,
+    source_map = True,
+    transpiler = "tsc",
+    tsconfig = "//:tsconfig",
+    visibility = ["//visibility:public"],
     deps = [
-        "@logos//:node_modules/inversify",
-        "@logos//:node_modules/@adobe/lit-mobx",
-        "@logos//app/auth/proto:web",
+        "//:node_modules/@types/node",
+        "//:node_modules/reflect-metadata",
+        "//:node_modules/inversify",
+        "//:node_modules/@adobe/lit-mobx",
+        #"//app/auth/proto:web",
         # TODO : remove this and move the login-complete.ts to the auth app
-        "@logos//app/auth/web",
+        #"@logos//app/auth/web",
         "//app/example/proto:grpc_web",
         "//app/example/storage:grpc_web",
-        "@logos//dev/logos/service/client/web/module",
-        "@logos//dev/logos/service/client/web/storage",
+        #"@logos//dev/logos/service/client/web/module",
+        #"@logos//dev/logos/service/client/web/storage",
     ],
 )

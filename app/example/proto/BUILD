@@ -11,12 +11,11 @@ java_proto_library(
     name = "proto_java",
     deps = [
         ":proto",
-        "//app/example/storage:proto",
     ],
 )
 
 java_grpc_library(
-    name = "java_library",
+    name = "grpc_java",
     srcs = [":proto"],
     visibility = ["//app/example:__subpackages__"],
     deps = [":proto_java"],
