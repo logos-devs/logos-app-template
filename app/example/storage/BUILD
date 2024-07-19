@@ -1,24 +1,39 @@
-load("@logos//dev/logos/service/storage/pg/exporter:schema_export.bzl", "schema_export", "storage_grpc_web_library", "storage_java_proto_library")
+load("@logos//dev/logos/service/storage/pg/exporter:schema_export.bzl", "schema_export", "schema_proto_src")  #"storage_grpc_web_library", "storage_java_proto_library")
+load("@logos//bzl:proto.bzl", "js_grpc_client")
+
+TABLES = {
+    "example_app": [
+        "example",
+    ],
+}
 
 schema_export(
     name = "schema_export",
     migrations = ["//app/example/storage/migrations"],
-    tables = {
-        "example_app": [
-            "example",
-        ],
-    },
+    tables = TABLES,
     visibility = ["//app/example:__subpackages__"],
 )
 
-storage_java_proto_library(
-    name = "storage",
-    srcs = [":schema_export"],
+schema_proto_src(
+    name = "schema_proto_src",
+    schema_export = ":schema_export",
+    tables = TABLES,
     visibility = ["//app/example:__subpackages__"],
 )
 
-storage_grpc_web_library(
+proto_library(
+    name = "proto",
+    srcs = [":schema_proto_src"],
+)
+
+java_proto_library(
+    name = "java_proto",
+    visibility = ["//app/example:__subpackages__"],
+    deps = [":proto"],
+)
+
+js_grpc_client(
     name = "grpc_web",
-    srcs = [":schema_export"],
+    proto = ":proto",
     visibility = ["//app/example:__subpackages__"],
 )
