@@ -1,0 +1,8 @@
+a deployed app should just be a kubernetes operator called logos_app that is declared to exist. it will point to the services jar and the wad of webshit, and whatever other metadata
+
+the backend server will in whatever manner know about these and listen for changes to them and reload itself.
+
+later this can be used to apportion apps to RPC servers; for now all will get all
+
+
+another approach would be to have one running rpc server binary per app. perhaps that's desirable from a security perspective. then envoy service discovery could be used?

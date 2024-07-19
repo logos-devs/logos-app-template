@@ -4,14 +4,14 @@ proto_library(
     name = "proto",
     srcs = ["feed.proto"],
     visibility = ["//app/example:__subpackages__"],
-    deps = ["//app/example/storage:schema_export"],
+    deps = ["//app/example/storage:proto"],
 )
 
 java_proto_library(
     name = "proto_java",
     deps = [
         ":proto",
-        "//app/example/storage",
+        "//app/example/storage:proto",
     ],
 )
 
@@ -26,5 +26,4 @@ js_grpc_client(
     name = "grpc_web",
     proto = ":proto",
     visibility = ["//app/example/web:__pkg__"],
-    deps = ["//app/example/storage:schema_export"],
 )
