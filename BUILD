@@ -11,3 +11,9 @@ copy_to_bin(
     ],
 )
 
+load("@aspect_rules_js//npm:defs.bzl", "npm_link_package")
+
+npm_link_package(
+    name = "node_modules/@logos/app",
+    src = "@logos//dev/logos/service/client/web/app:logos",
+)

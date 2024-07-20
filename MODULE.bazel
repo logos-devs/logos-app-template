@@ -69,7 +69,6 @@ use_repo(rules_ts_ext, "npm_typescript")
 # protobuf
 bazel_dep(name = "protobuf", version = "23.1", repo_name = "com_google_protobuf")
 
-
 # rules_jvm_external
 bazel_dep(name = "rules_jvm_external", version = "6.2")
 
