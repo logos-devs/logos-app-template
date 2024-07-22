@@ -2,10 +2,11 @@ load("@aspect_rules_swc//swc:defs.bzl", "swc")
 
 swc(
     name = "web",
-    srcs = glob(["**/*.ts"]),
+    srcs = glob(["**/*.ts"]) + [
+        "@logos//dev/logos/service/client/web/app:src",
+    ],
     swcrc = "//:swc.config.js",
     data = [
-        "@logos//dev/logos/service/client/web/app",
         "//:node_modules/@types/node",
         "//:node_modules/reflect-metadata",
         "//:node_modules/inversify",
