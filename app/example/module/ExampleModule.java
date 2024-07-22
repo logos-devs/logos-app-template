@@ -16,8 +16,8 @@ public class ExampleModule extends AppModule {
     @Provides
     public App provideApp() {
         return App.builder()
-                  .name("Summer")
-                  .domain("summer.app")
+                  .name("Logos Examples")
+                  .domain("example.logos.dev")
                   .build();
     }
 

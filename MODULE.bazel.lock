@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 6,
-  "moduleFileHash": "631eb86bdaf42921908c9cd5bd408d5c8f7e550b14da784c096d815e0c4fcbd6",
+  "moduleFileHash": "0a1a5b91e25f5240a281a475657651ee463e826f05b09efc7f8b1059904d75e5",
   "flags": {
     "cmdRegistries": [
       "https://bcr.bazel.build/"
@@ -14,7 +14,7 @@
   },
   "localOverrideHashes": {
     "bazel_tools": "1ae69322ac3823527337acf02016e8ee95813d8d356f47060255b8956fa642f0",
-    "logos": "2c9e91b21fbd24f12819aeb579a6118256800579a460dd2570bd758600260f72"
+    "logos": "c19c9b5cdce51b6846dd19f5f9770b6819d61c6ae86a6ffda0aef98c3f04c538"
   },
   "moduleDepGraph": {
     "<root>": {
@@ -87,7 +87,8 @@
               "attributeValues": {
                 "name": "npm",
                 "pnpm_lock": "//:pnpm-lock.yaml",
-                "verify_node_modules_ignored": "//:.bazelignore"
+                "verify_node_modules_ignored": "//:.bazelignore",
+                "npmrc": "@//:.npmrc"
               },
               "devDependency": true,
               "location": {
@@ -106,7 +107,7 @@
           "usingModule": "<root>",
           "location": {
             "file": "@@//:MODULE.bazel",
-            "line": 53,
+            "line": 54,
             "column": 21
           },
           "imports": {
@@ -123,7 +124,7 @@
           "usingModule": "<root>",
           "location": {
             "file": "@@//:MODULE.bazel",
-            "line": 65,
+            "line": 66,
             "column": 22
           },
           "imports": {
@@ -184,7 +185,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@//:MODULE.bazel",
-                "line": 66,
+                "line": 67,
                 "column": 14
               }
             }
@@ -449,7 +450,7 @@
           "usingModule": "logos@_",
           "location": {
             "file": "@@logos~//:MODULE.bazel",
-            "line": 186,
+            "line": 187,
             "column": 21
           },
           "imports": {
@@ -466,7 +467,7 @@
           "usingModule": "logos@_",
           "location": {
             "file": "@@logos~//:MODULE.bazel",
-            "line": 209,
+            "line": 207,
             "column": 27
           },
           "imports": {},
@@ -478,7 +479,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 210,
+                "line": 208,
                 "column": 16
               }
             }
@@ -492,7 +493,7 @@
           "usingModule": "logos@_",
           "location": {
             "file": "@@logos~//:MODULE.bazel",
-            "line": 218,
+            "line": 216,
             "column": 23
           },
           "imports": {},
@@ -506,7 +507,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 219,
+                "line": 217,
                 "column": 16
               }
             }
@@ -520,7 +521,7 @@
           "usingModule": "logos@_",
           "location": {
             "file": "@@logos~//:MODULE.bazel",
-            "line": 230,
+            "line": 225,
             "column": 20
           },
           "imports": {
@@ -544,7 +545,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 231,
+                "line": 226,
                 "column": 9
               }
             },
@@ -561,7 +562,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 238,
+                "line": 233,
                 "column": 9
               }
             },
@@ -575,7 +576,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 246,
+                "line": 241,
                 "column": 9
               }
             },
@@ -589,7 +590,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 253,
+                "line": 248,
                 "column": 9
               }
             },
@@ -603,7 +604,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 260,
+                "line": 255,
                 "column": 9
               }
             },
@@ -617,7 +618,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 267,
+                "line": 262,
                 "column": 9
               }
             },
@@ -635,7 +636,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 274,
+                "line": 269,
                 "column": 9
               }
             }
@@ -649,7 +650,7 @@
           "usingModule": "logos@_",
           "location": {
             "file": "@@logos~//:MODULE.bazel",
-            "line": 291,
+            "line": 286,
             "column": 20
           },
           "imports": {
@@ -667,7 +668,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 294,
+                "line": 289,
                 "column": 19
               }
             },
@@ -680,7 +681,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 301,
+                "line": 296,
                 "column": 19
               }
             }
@@ -705,7 +706,6 @@
         "rules_nodejs": "rules_nodejs@6.2.0",
         "aspect_rules_js": "aspect_rules_js@2.0.0-rc6",
         "aspect_rules_ts": "aspect_rules_ts@3.0.0-rc1",
-        "aspect_rules_swc": "aspect_rules_swc@2.0.0-rc1",
         "aspect_rules_rollup": "aspect_rules_rollup@2.0.0-rc0",
         "rules_go": "rules_go@0.46.0",
         "rules_oci": "rules_oci@1.4.0",
