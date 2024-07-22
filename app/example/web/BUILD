@@ -1,25 +1,11 @@
-load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
+load("@aspect_rules_swc//swc:defs.bzl", "swc")
 
-filegroup(
-    name = "external_",
-)
-
-ts_project(
+swc(
     name = "web",
-    srcs = glob(["**/*.ts"]) + [
-        #"@logos//dev/logos/stack/aws:cognito_public_host_map",
-        # TODO : pulling raw src for now, later will cut an npm module
-        "@logos//dev/logos/service/client/web/module",
-        "@logos//dev/logos/service/client/web/storage",
-    ],
-    composite = True,
-    declaration = True,
-    resolve_json_module = True,
-    source_map = True,
-    transpiler = "tsc",
-    tsconfig = "//:tsconfig",
-    visibility = ["//visibility:public"],
-    deps = [
+    srcs = glob(["**/*.ts"]),
+    swcrc = "//:swc.config.js",
+    data = [
+        "@logos//dev/logos/service/client/web/app",
         "//:node_modules/@types/node",
         "//:node_modules/reflect-metadata",
         "//:node_modules/inversify",
@@ -34,5 +20,7 @@ ts_project(
         "//:node_modules/@material/web",
         "//:node_modules/lit",
         "//:node_modules/lit-html",
+        #"@logos//dev/logos/stack/aws:cognito_public_host_map",
     ],
+    visibility = ["//visibility:public"],
 )

@@ -32,8 +32,8 @@ bazel_dep(
 bazel_dep(name = "grpc-java", version = "1.62.2", repo_name = "io_grpc_grpc_java")
 
 # pnpm
-bazel_dep(name = "rules_nodejs", version = "5.8.2")
-bazel_dep(name = "aspect_rules_js", version = "1.42.3")
+bazel_dep(name = "rules_nodejs", version = "6.2.0")
+bazel_dep(name = "aspect_rules_js", version = "2.0.0-rc6")
 
 node = use_extension("@rules_nodejs//nodejs:extensions.bzl", "node")
 node.toolchain()
@@ -53,18 +53,8 @@ use_repo(npm, "npm")
 pnpm = use_extension("@aspect_rules_js//npm:extensions.bzl", "pnpm")
 use_repo(pnpm, "pnpm")
 
-bazel_dep(
-    name = "aspect_rules_ts",
-    version = "2.4.2",
-)
-
-rules_ts_ext = use_extension(
-    "@aspect_rules_ts//ts:extensions.bzl",
-    "ext",
-    dev_dependency = True,
-)
-rules_ts_ext.deps()
-use_repo(rules_ts_ext, "npm_typescript")
+# aspect_rules_swc
+bazel_dep(name = "aspect_rules_swc", version = "2.0.0-rc1")
 
 # protobuf
 bazel_dep(name = "protobuf", version = "23.1", repo_name = "com_google_protobuf")

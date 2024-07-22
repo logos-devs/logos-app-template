@@ -8,6 +8,10 @@ java_library(
         "//app/example/module:__subpackages__",
     ],
     deps = [
+        "//app/example/proto:proto_java",
+        "//app/example/proto:grpc_java",
+        "//app/example/storage:java_grpc",
+        "//app/example/storage:java_proto",
         "//app/example/storage:java_storage_service",
         "@com_google_protobuf//:protobuf_java",
         "@io_grpc_grpc_java//api",

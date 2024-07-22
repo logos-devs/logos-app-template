@@ -12,6 +12,7 @@ java_proto_library(
     deps = [
         ":proto",
     ],
+    visibility = ["//app/example:__subpackages__"],
 )
 
 java_grpc_library(
