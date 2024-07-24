@@ -5,10 +5,7 @@
 /.ijwb/.blaze/modules/.workspace.iml
 /.ijwb/.idea/libraries
 /.pnpm-store
-/bazel-bin
-/bazel-logos
-/bazel-out
-/bazel-testlogs
+/bazel-*
 /cfg/*
 /jobs/*
 /node_modules/*
