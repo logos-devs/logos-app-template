@@ -8,8 +8,8 @@ java_library(
         "//app/example/module:__subpackages__",
     ],
     deps = [
-        "//app/example/proto:proto_java",
         "//app/example/proto:grpc_java",
+        "//app/example/proto:proto_java",
         "//app/example/storage:java_grpc",
         "//app/example/storage:java_proto",
         "//app/example/storage:java_storage_service",
@@ -22,6 +22,6 @@ java_library(
         "@logos//dev/logos/service/storage/pg",
         "@logos//dev/logos/service/storage/validator",
         "@logos//dev/logos/user",
-        "@maven//:com_google_inject_guice",
+        "@maven_logos//:com_google_inject_guice",
     ],
 )

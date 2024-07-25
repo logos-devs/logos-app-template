@@ -1,6 +1,13 @@
-export * from "app/summer/web/view-feed";
-export * from "app/summer/web/frame-root";
-export * from "app/summer/web/view-explore";
-export * from "app/summer/web/view-profile";
-export * from "app/summer/web/login-complete";
-export * from "app/summer/web/view-feed-entry";
+import "reflect-metadata";
+//import 'app/auth/web/module/auth-module';
+import './components/base-router';
+
+import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
+
+document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+
+customElements.whenDefined('base-router').then(() => {
+    document.body.appendChild(
+        document.createElement('base-router')
+    );
+});

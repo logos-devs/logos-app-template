@@ -12,10 +12,10 @@ build --java_runtime_version=remotejdk_17
 build --tool_java_language_version=17
 build --tool_java_runtime_version=remotejdk_17
 build --sandbox_default_allow_network=false
-build --action_env=CC=/usr/lib/llvm/17/bin/clang
-build --action_env=CXX=/usr/lib/llvm/17/bin/clang++
-build --repo_env=CC=/usr/lib/llvm/17/bin/clang
-build --repo_env=CXX=/usr/lib/llvm/17/bin/clang++
+build --action_env=CC=/usr/lib/llvm/18/bin/clang
+build --action_env=CXX=/usr/lib/llvm/18/bin/clang++
+build --repo_env=CC=/usr/lib/llvm/18/bin/clang
+build --repo_env=CXX=/usr/lib/llvm/18/bin/clang++
 run --incompatible_strict_action_env
 run --run_under='@logos//tools:bazel-env.sh'
 

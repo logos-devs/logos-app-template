@@ -1,5 +1,5 @@
-import {lazyInject} from "dev/logos/service/client/web/module/app-module";
-import {User} from "dev/logos/service/client/web/module/user";
+import {lazyInject} from "dev/logos/web/module/app-module";
+import {User} from "dev/logos/web/module/user";
 import cognitoPublicHostMap from "dev/logos/stack/aws/cognito_public_host_map.json";
 import {css, html, LitElement} from "lit";
 import {customElement} from "lit/decorators.js";

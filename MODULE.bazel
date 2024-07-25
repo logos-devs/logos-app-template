@@ -57,6 +57,12 @@ use_repo(pnpm, "pnpm")
 # aspect_rules_swc
 bazel_dep(name = "aspect_rules_swc", version = "2.0.0-rc1")
 
+# rules_rollup
+bazel_dep(name = "aspect_rules_rollup", version = "2.0.0-rc0")
+
+rollup_ext = use_extension("@aspect_rules_rollup//rollup:extensions.bzl", "ext")
+rollup_ext.deps()
+
 # protobuf
 bazel_dep(name = "protobuf", version = "23.1", repo_name = "com_google_protobuf")
 
@@ -65,22 +71,26 @@ bazel_dep(name = "rules_jvm_external", version = "6.2")
 
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 maven.install(
+    name = "maven_logos",
     artifacts = [
         "com.auth0:java-jwt:4.4.0",
         "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.15.2",
+        "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.15.2",
         "com.google.code.gson:gson:2.10.1",
         "com.google.inject:guice:7.0.0",
         "com.mysema.commons:mysema-commons-lang:0.2.4",
         "com.squareup:javapoet:1.13.0",
-        "com.twilio.sdk:twilio:10.2.1",
         "com.yubico:webauthn-server-core:2.5.0",
         "com.zaxxer:HikariCP:5.0.1",
         "dnsjava:dnsjava:3.5.2",
+        "io.grpc:grpc-netty-shaded:1.64.0",
+        "io.grpc:grpc-protobuf:1.64.0",
+        "io.grpc:grpc-stub:1.64.0",
         "io.jsonwebtoken:jjwt:0.12.3",
         "javax.annotation:javax.annotation-api:1.3.2",
         "javax.json:javax.json-api:1.1.4",
-        "org.antlr:antlr4-runtime:4.13.0",
         "org.apache.httpcomponents.client5:httpclient5:5.2.2",
+        "org.apache.tomcat:annotations-api:6.0.53",
         "org.eclipse.jgit:org.eclipse.jgit:6.6.0.202305301015-r",
         "org.jdbi:jdbi3-core:3.39.1",
         "org.jdbi:jdbi3-postgres:3.35.0",
@@ -90,17 +100,17 @@ maven.install(
         "org.reflections:reflections:0.10.2",
         "org.slf4j:slf4j-api:2.0.7",
         "org.slf4j:slf4j-simple:2.0.7",
-        "software.amazon.awssdk:auth:2.20.102",
-        "software.amazon.awssdk:cognitoidentityprovider:2.20.102",
-        "software.amazon.awssdk:ec2:2.20.102",
-        "software.amazon.awssdk:rds:2.20.102",
-        "software.amazon.awssdk:regions:2.20.102",
-        "software.amazon.awssdk:s3:2.20.102",
-        "software.amazon.awssdk:secretsmanager:2.20.102",
-        "software.amazon.awssdk:sso:2.20.102",
-        "software.amazon.awssdk:ssooidc:2.20.102",
-        "software.amazon.awssdk:sts:2.20.102",
-        "software.amazon.awssdk:utils:2.20.102",
+        "software.amazon.awssdk:auth:2.26.23",
+        "software.amazon.awssdk:cognitoidentityprovider:2.26.23",
+        "software.amazon.awssdk:ec2:2.26.23",
+        "software.amazon.awssdk:rds:2.26.23",
+        "software.amazon.awssdk:regions:2.26.23",
+        "software.amazon.awssdk:s3:2.26.23",
+        "software.amazon.awssdk:secretsmanager:2.26.23",
+        "software.amazon.awssdk:sso:2.26.23",
+        "software.amazon.awssdk:ssooidc:2.26.23",
+        "software.amazon.awssdk:sts:2.26.23",
+        "software.amazon.awssdk:utils:2.26.23",
     ],
     fail_if_repin_required = True,
     fetch_javadoc = True,
@@ -113,4 +123,4 @@ maven.install(
     ],
     version_conflict_policy = "pinned",
 )
-use_repo(maven, "maven")
+use_repo(maven, "maven_logos")

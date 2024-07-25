@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 6,
-  "moduleFileHash": "0a1a5b91e25f5240a281a475657651ee463e826f05b09efc7f8b1059904d75e5",
+  "moduleFileHash": "27274ba3d971771c63d2787ce3ff09bed711a7f5305f637b75a23d4d21ad03c1",
   "flags": {
     "cmdRegistries": [
       "https://bcr.bazel.build/"
@@ -14,7 +14,7 @@
   },
   "localOverrideHashes": {
     "bazel_tools": "1ae69322ac3823527337acf02016e8ee95813d8d356f47060255b8956fa642f0",
-    "logos": "c19c9b5cdce51b6846dd19f5f9770b6819d61c6ae86a6ffda0aef98c3f04c538"
+    "logos": "6c813b3359d2b7a7be8270087ed74b73d52b39ac8c5cea7944c5fc2d35618b46"
   },
   "moduleDepGraph": {
     "<root>": {
@@ -119,38 +119,68 @@
           "hasNonDevUseExtension": true
         },
         {
+          "extensionBzlFile": "@aspect_rules_rollup//rollup:extensions.bzl",
+          "extensionName": "ext",
+          "usingModule": "<root>",
+          "location": {
+            "file": "@@//:MODULE.bazel",
+            "line": 63,
+            "column": 27
+          },
+          "imports": {},
+          "devImports": [],
+          "tags": [
+            {
+              "tagName": "deps",
+              "attributeValues": {},
+              "devDependency": false,
+              "location": {
+                "file": "@@//:MODULE.bazel",
+                "line": 64,
+                "column": 16
+              }
+            }
+          ],
+          "hasDevUseExtension": false,
+          "hasNonDevUseExtension": true
+        },
+        {
           "extensionBzlFile": "@rules_jvm_external//:extensions.bzl",
           "extensionName": "maven",
           "usingModule": "<root>",
           "location": {
             "file": "@@//:MODULE.bazel",
-            "line": 66,
+            "line": 72,
             "column": 22
           },
           "imports": {
-            "maven": "maven"
+            "maven_logos": "maven_logos"
           },
           "devImports": [],
           "tags": [
             {
               "tagName": "install",
               "attributeValues": {
+                "name": "maven_logos",
                 "artifacts": [
                   "com.auth0:java-jwt:4.4.0",
                   "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.15.2",
+                  "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.15.2",
                   "com.google.code.gson:gson:2.10.1",
                   "com.google.inject:guice:7.0.0",
                   "com.mysema.commons:mysema-commons-lang:0.2.4",
                   "com.squareup:javapoet:1.13.0",
-                  "com.twilio.sdk:twilio:10.2.1",
                   "com.yubico:webauthn-server-core:2.5.0",
                   "com.zaxxer:HikariCP:5.0.1",
                   "dnsjava:dnsjava:3.5.2",
+                  "io.grpc:grpc-netty-shaded:1.64.0",
+                  "io.grpc:grpc-protobuf:1.64.0",
+                  "io.grpc:grpc-stub:1.64.0",
                   "io.jsonwebtoken:jjwt:0.12.3",
                   "javax.annotation:javax.annotation-api:1.3.2",
                   "javax.json:javax.json-api:1.1.4",
-                  "org.antlr:antlr4-runtime:4.13.0",
                   "org.apache.httpcomponents.client5:httpclient5:5.2.2",
+                  "org.apache.tomcat:annotations-api:6.0.53",
                   "org.eclipse.jgit:org.eclipse.jgit:6.6.0.202305301015-r",
                   "org.jdbi:jdbi3-core:3.39.1",
                   "org.jdbi:jdbi3-postgres:3.35.0",
@@ -160,17 +190,17 @@
                   "org.reflections:reflections:0.10.2",
                   "org.slf4j:slf4j-api:2.0.7",
                   "org.slf4j:slf4j-simple:2.0.7",
-                  "software.amazon.awssdk:auth:2.20.102",
-                  "software.amazon.awssdk:cognitoidentityprovider:2.20.102",
-                  "software.amazon.awssdk:ec2:2.20.102",
-                  "software.amazon.awssdk:rds:2.20.102",
-                  "software.amazon.awssdk:regions:2.20.102",
-                  "software.amazon.awssdk:s3:2.20.102",
-                  "software.amazon.awssdk:secretsmanager:2.20.102",
-                  "software.amazon.awssdk:sso:2.20.102",
-                  "software.amazon.awssdk:ssooidc:2.20.102",
-                  "software.amazon.awssdk:sts:2.20.102",
-                  "software.amazon.awssdk:utils:2.20.102"
+                  "software.amazon.awssdk:auth:2.26.23",
+                  "software.amazon.awssdk:cognitoidentityprovider:2.26.23",
+                  "software.amazon.awssdk:ec2:2.26.23",
+                  "software.amazon.awssdk:rds:2.26.23",
+                  "software.amazon.awssdk:regions:2.26.23",
+                  "software.amazon.awssdk:s3:2.26.23",
+                  "software.amazon.awssdk:secretsmanager:2.26.23",
+                  "software.amazon.awssdk:sso:2.26.23",
+                  "software.amazon.awssdk:ssooidc:2.26.23",
+                  "software.amazon.awssdk:sts:2.26.23",
+                  "software.amazon.awssdk:utils:2.26.23"
                 ],
                 "fail_if_repin_required": true,
                 "fetch_javadoc": true,
@@ -185,7 +215,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@//:MODULE.bazel",
-                "line": 67,
+                "line": 73,
                 "column": 14
               }
             }
@@ -197,10 +227,11 @@
       "deps": {
         "logos": "logos@_",
         "aspect_bazel_lib": "aspect_bazel_lib@2.7.7",
-        "io_grpc_grpc_java": "grpc-java@1.62.2",
+        "io_grpc_grpc_java": "grpc-java@1.64.0",
         "rules_nodejs": "rules_nodejs@6.2.0",
         "aspect_rules_js": "aspect_rules_js@2.0.0-rc6",
         "aspect_rules_swc": "aspect_rules_swc@2.0.0-rc1",
+        "aspect_rules_rollup": "aspect_rules_rollup@2.0.0-rc0",
         "com_google_protobuf": "protobuf@23.1",
         "rules_jvm_external": "rules_jvm_external@6.2",
         "bazel_tools": "bazel_tools@_",
@@ -356,53 +387,54 @@
             "column": 22
           },
           "imports": {
-            "maven": "maven"
+            "maven_logos": "maven_logos",
+            "unpinned_maven_logos": "unpinned_maven_logos"
           },
           "devImports": [],
           "tags": [
             {
               "tagName": "install",
               "attributeValues": {
+                "name": "maven_logos",
                 "artifacts": [
-                  "io.grpc:grpc-netty-shaded:1.65.0",
-                  "io.grpc:grpc-protobuf:1.65.0",
-                  "io.grpc:grpc-stub:1.65.0",
-                  "org.apache.tomcat:annotations-api:6.0.53",
                   "com.auth0:java-jwt:4.4.0",
                   "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.15.2",
+                  "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.15.2",
+                  "com.google.code.gson:gson:2.10.1",
                   "com.google.inject:guice:7.0.0",
                   "com.mysema.commons:mysema-commons-lang:0.2.4",
-                  "com.twilio.sdk:twilio:10.2.1",
+                  "com.squareup:javapoet:1.13.0",
                   "com.yubico:webauthn-server-core:2.5.0",
                   "com.zaxxer:HikariCP:5.0.1",
                   "dnsjava:dnsjava:3.5.2",
+                  "io.grpc:grpc-netty-shaded:1.64.0",
+                  "io.grpc:grpc-protobuf:1.64.0",
+                  "io.grpc:grpc-stub:1.64.0",
                   "io.jsonwebtoken:jjwt:0.12.3",
                   "javax.annotation:javax.annotation-api:1.3.2",
                   "javax.json:javax.json-api:1.1.4",
-                  "org.antlr:antlr4-runtime:4.13.0",
                   "org.apache.httpcomponents.client5:httpclient5:5.2.2",
-                  "org.reflections:reflections:0.10.2",
+                  "org.apache.tomcat:annotations-api:6.0.53",
                   "org.eclipse.jgit:org.eclipse.jgit:6.6.0.202305301015-r",
                   "org.jdbi:jdbi3-core:3.39.1",
-                  "com.squareup:javapoet:1.13.0",
                   "org.jdbi:jdbi3-postgres:3.35.0",
                   "org.junit.jupiter:junit-jupiter-api:5.9.3",
                   "org.postgresql:postgresql:42.6.0",
                   "org.reactivestreams:reactive-streams:1.0.4",
+                  "org.reflections:reflections:0.10.2",
                   "org.slf4j:slf4j-api:2.0.7",
                   "org.slf4j:slf4j-simple:2.0.7",
-                  "software.amazon.awssdk:auth:2.20.102",
-                  "software.amazon.awssdk:cognitoidentityprovider:2.20.102",
-                  "software.amazon.awssdk:ec2:2.20.102",
-                  "software.amazon.awssdk:rds:2.20.102",
-                  "software.amazon.awssdk:s3:2.20.102",
-                  "software.amazon.awssdk:sso:2.20.102",
-                  "software.amazon.awssdk:ssooidc:2.20.102",
-                  "software.amazon.awssdk:secretsmanager:2.20.102",
-                  "software.amazon.awssdk:sts:2.20.102",
-                  "software.amazon.awssdk:regions:2.20.102",
-                  "software.amazon.awssdk:utils:2.20.102",
-                  "com.google.code.gson:gson:2.10.1"
+                  "software.amazon.awssdk:auth:2.26.23",
+                  "software.amazon.awssdk:cognitoidentityprovider:2.26.23",
+                  "software.amazon.awssdk:ec2:2.26.23",
+                  "software.amazon.awssdk:rds:2.26.23",
+                  "software.amazon.awssdk:regions:2.26.23",
+                  "software.amazon.awssdk:s3:2.26.23",
+                  "software.amazon.awssdk:secretsmanager:2.26.23",
+                  "software.amazon.awssdk:sso:2.26.23",
+                  "software.amazon.awssdk:ssooidc:2.26.23",
+                  "software.amazon.awssdk:sts:2.26.23",
+                  "software.amazon.awssdk:utils:2.26.23"
                 ],
                 "fail_if_repin_required": true,
                 "fetch_javadoc": true,
@@ -431,7 +463,7 @@
           "usingModule": "logos@_",
           "location": {
             "file": "@@logos~//:MODULE.bazel",
-            "line": 152,
+            "line": 156,
             "column": 33
           },
           "imports": {
@@ -450,7 +482,7 @@
           "usingModule": "logos@_",
           "location": {
             "file": "@@logos~//:MODULE.bazel",
-            "line": 187,
+            "line": 191,
             "column": 21
           },
           "imports": {
@@ -467,7 +499,7 @@
           "usingModule": "logos@_",
           "location": {
             "file": "@@logos~//:MODULE.bazel",
-            "line": 207,
+            "line": 211,
             "column": 27
           },
           "imports": {},
@@ -479,7 +511,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 208,
+                "line": 212,
                 "column": 16
               }
             }
@@ -493,7 +525,7 @@
           "usingModule": "logos@_",
           "location": {
             "file": "@@logos~//:MODULE.bazel",
-            "line": 216,
+            "line": 220,
             "column": 23
           },
           "imports": {},
@@ -507,7 +539,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 217,
+                "line": 221,
                 "column": 16
               }
             }
@@ -521,7 +553,7 @@
           "usingModule": "logos@_",
           "location": {
             "file": "@@logos~//:MODULE.bazel",
-            "line": 225,
+            "line": 229,
             "column": 20
           },
           "imports": {
@@ -545,7 +577,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 226,
+                "line": 230,
                 "column": 9
               }
             },
@@ -562,7 +594,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 233,
+                "line": 237,
                 "column": 9
               }
             },
@@ -576,7 +608,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 241,
+                "line": 245,
                 "column": 9
               }
             },
@@ -590,7 +622,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 248,
+                "line": 252,
                 "column": 9
               }
             },
@@ -604,7 +636,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 255,
+                "line": 259,
                 "column": 9
               }
             },
@@ -618,7 +650,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 262,
+                "line": 266,
                 "column": 9
               }
             },
@@ -636,7 +668,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 269,
+                "line": 273,
                 "column": 9
               }
             }
@@ -650,7 +682,7 @@
           "usingModule": "logos@_",
           "location": {
             "file": "@@logos~//:MODULE.bazel",
-            "line": 286,
+            "line": 290,
             "column": 20
           },
           "imports": {
@@ -668,7 +700,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 289,
+                "line": 293,
                 "column": 19
               }
             },
@@ -681,7 +713,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 296,
+                "line": 300,
                 "column": 19
               }
             }
@@ -693,7 +725,7 @@
       "deps": {
         "platforms": "platforms@0.0.10",
         "rules_cc": "rules_cc@0.0.9",
-        "io_grpc_grpc_java": "grpc-java@1.62.2",
+        "io_grpc_grpc_java": "grpc-java@1.64.0",
         "rules_jvm_external": "rules_jvm_external@6.2",
         "rules_foreign_cc": "rules_foreign_cc@0.10.1",
         "rules_proto": "rules_proto@6.0.0",
@@ -702,7 +734,7 @@
         "aspect_bazel_lib": "aspect_bazel_lib@2.7.7",
         "container_structure_test": "container_structure_test@1.16.0",
         "gazelle": "gazelle@0.34.0",
-        "rules_pkg": "rules_pkg@0.9.1",
+        "rules_pkg": "rules_pkg@1.0.1",
         "rules_nodejs": "rules_nodejs@6.2.0",
         "aspect_rules_js": "aspect_rules_js@2.0.0-rc6",
         "aspect_rules_ts": "aspect_rules_ts@3.0.0-rc1",
@@ -873,10 +905,10 @@
         }
       }
     },
-    "grpc-java@1.62.2": {
+    "grpc-java@1.64.0": {
       "name": "grpc-java",
-      "version": "1.62.2",
-      "key": "grpc-java@1.62.2",
+      "version": "1.64.0",
+      "key": "grpc-java@1.64.0",
       "repoName": "io_grpc_grpc_java",
       "executionPlatformsToRegister": [],
       "toolchainsToRegister": [],
@@ -884,10 +916,10 @@
         {
           "extensionBzlFile": "@io_grpc_grpc_java//:repositories.bzl",
           "extensionName": "grpc_java_repositories_extension",
-          "usingModule": "grpc-java@1.62.2",
+          "usingModule": "grpc-java@1.64.0",
           "location": {
-            "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-            "line": 16,
+            "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+            "line": 57,
             "column": 32
           },
           "imports": {
@@ -903,10 +935,10 @@
         {
           "extensionBzlFile": "@com_github_grpc_grpc//bazel:grpc_deps.bzl",
           "extensionName": "grpc_repo_deps_ext",
-          "usingModule": "grpc-java@1.62.2",
+          "usingModule": "grpc-java@1.64.0",
           "location": {
-            "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-            "line": 24,
+            "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+            "line": 66,
             "column": 35
           },
           "imports": {
@@ -922,27 +954,25 @@
         {
           "extensionBzlFile": "@rules_jvm_external//:extensions.bzl",
           "extensionName": "maven",
-          "usingModule": "grpc-java@1.62.2",
+          "usingModule": "grpc-java@1.64.0",
           "location": {
-            "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-            "line": 32,
+            "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+            "line": 75,
             "column": 22
           },
           "imports": {
-            "grpc_java_maven": "grpc_java_maven",
-            "unpinned_grpc_java_maven": "unpinned_grpc_java_maven"
+            "maven": "maven"
           },
           "devImports": [],
           "tags": [
             {
               "tagName": "install",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "artifacts": [
                   "com.google.android:annotations:4.1.1.4",
                   "com.google.api.grpc:proto-google-common-protos:2.29.0",
-                  "com.google.auth:google-auth-library-credentials:1.4.0",
-                  "com.google.auth:google-auth-library-oauth2-http:1.4.0",
+                  "com.google.auth:google-auth-library-credentials:1.22.0",
+                  "com.google.auth:google-auth-library-oauth2-http:1.22.0",
                   "com.google.auto.value:auto-value-annotations:1.10.4",
                   "com.google.auto.value:auto-value:1.10.4",
                   "com.google.code.findbugs:jsr305:3.0.2",
@@ -975,338 +1005,314 @@
                   "org.apache.tomcat:annotations-api:6.0.53",
                   "org.codehaus.mojo:animal-sniffer-annotations:1.23"
                 ],
-                "lock_file": "//:maven_install.json",
                 "repositories": [
-                  "https://repo1.maven.org/maven2",
-                  "https://maven.google.com"
-                ]
+                  "https://repo.maven.apache.org/maven2/"
+                ],
+                "strict_visibility": true
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 33,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 77,
                 "column": 14
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "com.google.protobuf:protobuf-java",
                 "target": "@com_google_protobuf//:protobuf_java"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 79,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 87,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "com.google.protobuf:protobuf-java-util",
                 "target": "@com_google_protobuf//:protobuf_java_util"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 84,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 92,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "com.google.protobuf:protobuf-javalite",
-                "target": "@com_google_protobuf_javalite//:protobuf_javalite"
+                "target": "@com_google_protobuf//:protobuf_javalite"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 89,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 97,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-alts",
                 "target": "@io_grpc_grpc_java//alts"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 94,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 102,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-api",
                 "target": "@io_grpc_grpc_java//api"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 99,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 107,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-auth",
                 "target": "@io_grpc_grpc_java//auth"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 104,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 112,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-census",
                 "target": "@io_grpc_grpc_java//census"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 109,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 117,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-context",
                 "target": "@io_grpc_grpc_java//context"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 114,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 122,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-core",
                 "target": "@io_grpc_grpc_java//core:core_maven"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 119,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 127,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-googleapis",
                 "target": "@io_grpc_grpc_java//googleapis"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 124,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 132,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-grpclb",
                 "target": "@io_grpc_grpc_java//grpclb"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 129,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 137,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-inprocess",
                 "target": "@io_grpc_grpc_java//inprocess"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 134,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 142,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-netty",
                 "target": "@io_grpc_grpc_java//netty"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 139,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 147,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-netty-shaded",
                 "target": "@io_grpc_grpc_java//netty:shaded_maven"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 144,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 152,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-okhttp",
                 "target": "@io_grpc_grpc_java//okhttp"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 149,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 157,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-protobuf",
                 "target": "@io_grpc_grpc_java//protobuf"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 154,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 162,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-protobuf-lite",
                 "target": "@io_grpc_grpc_java//protobuf-lite"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 159,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 167,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-rls",
                 "target": "@io_grpc_grpc_java//rls"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 164,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 172,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-services",
                 "target": "@io_grpc_grpc_java//services:services_maven"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 169,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 177,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-stub",
                 "target": "@io_grpc_grpc_java//stub"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 174,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 182,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-testing",
                 "target": "@io_grpc_grpc_java//testing"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 179,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 187,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-xds",
                 "target": "@io_grpc_grpc_java//xds:xds_maven"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 184,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 192,
                 "column": 15
               }
             },
             {
               "tagName": "override",
               "attributeValues": {
-                "name": "grpc_java_maven",
                 "coordinates": "io.grpc:grpc-util",
                 "target": "@io_grpc_grpc_java//util"
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 189,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 197,
                 "column": 15
               }
             }
@@ -1317,10 +1323,10 @@
         {
           "extensionBzlFile": "@com_google_googleapis//:extensions.bzl",
           "extensionName": "switched_rules",
-          "usingModule": "grpc-java@1.62.2",
+          "usingModule": "grpc-java@1.64.0",
           "location": {
-            "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-            "line": 195,
+            "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+            "line": 202,
             "column": 31
           },
           "imports": {
@@ -1335,8 +1341,8 @@
               },
               "devDependency": false,
               "location": {
-                "file": "https://bcr.bazel.build/modules/grpc-java/1.62.2/MODULE.bazel",
-                "line": 196,
+                "file": "https://bcr.bazel.build/modules/grpc-java/1.64.0/MODULE.bazel",
+                "line": 204,
                 "column": 29
               }
             }
@@ -1350,6 +1356,7 @@
         "com_github_grpc_grpc": "grpc@1.56.3.bcr.1",
         "com_google_protobuf": "protobuf@23.1",
         "rules_cc": "rules_cc@0.0.9",
+        "rules_java": "rules_java@7.6.1",
         "io_bazel_rules_go": "rules_go@0.46.0",
         "rules_jvm_external": "rules_jvm_external@6.2",
         "rules_proto": "rules_proto@6.0.0",
@@ -1361,16 +1368,14 @@
         "ruleClassName": "http_archive",
         "attributes": {
           "urls": [
-            "https://github.com/grpc/grpc-java/archive/refs/tags/v1.62.2.tar.gz"
+            "https://github.com/grpc/grpc-java/archive/refs/tags/v1.64.0.tar.gz"
           ],
-          "integrity": "sha256-MM/JVMIXRJOCJgGnS4doN5hsRE2bnpFwgplLXjQ0jzQ=",
-          "strip_prefix": "grpc-java-1.62.2",
+          "integrity": "sha256-hiaqXiASPlVBCDb6k5u3k4RZTv3UW5eeiDZC2szK36E=",
+          "strip_prefix": "grpc-java-1.64.0",
           "remote_patches": {
-            "https://bcr.bazel.build/modules/grpc-java/1.62.2/patches/add_module_bazel.patch": "sha256-CBDMVs47Z5StAQx+xSGGJCVqkmz9WtK0flsU9rb4MkE=",
-            "https://bcr.bazel.build/modules/grpc-java/1.62.2/patches/maven_lockfile.patch": "sha256-VSRs53yvnCbNzxLFLSvf2FmBCGnJrD+ArNMN2QKLBbs=",
-            "https://bcr.bazel.build/modules/grpc-java/1.62.2/patches/update_labels.patch": "sha256-22pO7tCUdPKjo4xOasAdrU2N50aHAH2bYAoSkPN4HeU="
+            "https://bcr.bazel.build/modules/grpc-java/1.64.0/patches/module_dot_bazel_version.patch": "sha256-DwMImFR9xKzB52qlWeQ3+2zrh6aOkM6l8HFyZGTQbIA="
           },
-          "remote_patch_strip": 1
+          "remote_patch_strip": 0
         }
       }
     },
@@ -1640,6 +1645,71 @@
         }
       }
     },
+    "aspect_rules_rollup@2.0.0-rc0": {
+      "name": "aspect_rules_rollup",
+      "version": "2.0.0-rc0",
+      "key": "aspect_rules_rollup@2.0.0-rc0",
+      "repoName": "aspect_rules_rollup",
+      "executionPlatformsToRegister": [],
+      "toolchainsToRegister": [],
+      "extensionUsages": [
+        {
+          "extensionBzlFile": "@aspect_rules_rollup//rollup:extensions.bzl",
+          "extensionName": "rollup",
+          "usingModule": "aspect_rules_rollup@2.0.0-rc0",
+          "location": {
+            "file": "https://bcr.bazel.build/modules/aspect_rules_rollup/2.0.0-rc0/MODULE.bazel",
+            "line": 16,
+            "column": 23
+          },
+          "imports": {
+            "rollup": "rollup"
+          },
+          "devImports": [],
+          "tags": [
+            {
+              "tagName": "toolchain",
+              "attributeValues": {
+                "name": "rollup",
+                "rollup_version": "v2.70.2"
+              },
+              "devDependency": false,
+              "location": {
+                "file": "https://bcr.bazel.build/modules/aspect_rules_rollup/2.0.0-rc0/MODULE.bazel",
+                "line": 17,
+                "column": 17
+              }
+            }
+          ],
+          "hasDevUseExtension": false,
+          "hasNonDevUseExtension": true
+        }
+      ],
+      "deps": {
+        "aspect_bazel_lib": "aspect_bazel_lib@2.7.7",
+        "aspect_rules_js": "aspect_rules_js@2.0.0-rc6",
+        "bazel_skylib": "bazel_skylib@1.7.1",
+        "rules_nodejs": "rules_nodejs@6.2.0",
+        "platforms": "platforms@0.0.10",
+        "bazel_tools": "bazel_tools@_",
+        "local_config_platform": "local_config_platform@_"
+      },
+      "repoSpec": {
+        "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
+        "ruleClassName": "http_archive",
+        "attributes": {
+          "urls": [
+            "https://github.com/aspect-build/rules_rollup/releases/download/v2.0.0-rc0/rules_rollup-v2.0.0-rc0.tar.gz"
+          ],
+          "integrity": "sha256-4fG8Um+/iAhrC3+cJFWqGaS0zP3cdx4q6gTGVtLLpqE=",
+          "strip_prefix": "rules_rollup-2.0.0-rc0",
+          "remote_patches": {
+            "https://bcr.bazel.build/modules/aspect_rules_rollup/2.0.0-rc0/patches/module_dot_bazel_version.patch": "sha256-kRSNVEWq9EJorYDVbkSzeQZ9O6PuK4B3TImISdrAPtU="
+          },
+          "remote_patch_strip": 1
+        }
+      }
+    },
     "protobuf@23.1": {
       "name": "protobuf",
       "version": "23.1",
@@ -1713,7 +1783,7 @@
         "rules_cc": "rules_cc@0.0.9",
         "rules_proto": "rules_proto@6.0.0",
         "rules_java": "rules_java@7.6.1",
-        "rules_pkg": "rules_pkg@0.9.1",
+        "rules_pkg": "rules_pkg@1.0.1",
         "platforms": "platforms@0.0.10",
         "com_google_absl": "abseil-cpp@20230802.0.bcr.1",
         "zlib": "zlib@1.3",
@@ -2693,18 +2763,18 @@
         }
       }
     },
-    "rules_pkg@0.9.1": {
+    "rules_pkg@1.0.1": {
       "name": "rules_pkg",
-      "version": "0.9.1",
-      "key": "rules_pkg@0.9.1",
+      "version": "1.0.1",
+      "key": "rules_pkg@1.0.1",
       "repoName": "rules_pkg",
       "executionPlatformsToRegister": [],
       "toolchainsToRegister": [],
       "extensionUsages": [],
       "deps": {
         "rules_license": "rules_license@0.0.7",
-        "bazel_skylib": "bazel_skylib@1.7.1",
         "rules_python": "rules_python@0.31.0",
+        "bazel_skylib": "bazel_skylib@1.7.1",
         "bazel_tools": "bazel_tools@_",
         "local_config_platform": "local_config_platform@_"
       },
@@ -2713,9 +2783,9 @@
         "ruleClassName": "http_archive",
         "attributes": {
           "urls": [
-            "https://github.com/bazelbuild/rules_pkg/releases/download/0.9.1/rules_pkg-0.9.1.tar.gz"
+            "https://github.com/bazelbuild/rules_pkg/releases/download/1.0.1/rules_pkg-1.0.1.tar.gz"
           ],
-          "integrity": "sha256-j57i3BDBrlFO5ZmotC7Zn6Jit1cFj2WtPDhCif9wxLg=",
+          "integrity": "sha256-0gyVGWDtd8t7NBwqWUiFNOSU1a0dMMSBjHNtV3cqn+8=",
           "strip_prefix": "",
           "remote_patches": {},
           "remote_patch_strip": 0
@@ -2751,71 +2821,6 @@
           "strip_prefix": "rules_ts-3.0.0-rc1",
           "remote_patches": {
             "https://bcr.bazel.build/modules/aspect_rules_ts/3.0.0-rc1/patches/module_dot_bazel_version.patch": "sha256-Qisr7DL7bbucuDIFFNpXJCO3bREFtGMi4vjA1BgPbww="
-          },
-          "remote_patch_strip": 1
-        }
-      }
-    },
-    "aspect_rules_rollup@2.0.0-rc0": {
-      "name": "aspect_rules_rollup",
-      "version": "2.0.0-rc0",
-      "key": "aspect_rules_rollup@2.0.0-rc0",
-      "repoName": "aspect_rules_rollup",
-      "executionPlatformsToRegister": [],
-      "toolchainsToRegister": [],
-      "extensionUsages": [
-        {
-          "extensionBzlFile": "@aspect_rules_rollup//rollup:extensions.bzl",
-          "extensionName": "rollup",
-          "usingModule": "aspect_rules_rollup@2.0.0-rc0",
-          "location": {
-            "file": "https://bcr.bazel.build/modules/aspect_rules_rollup/2.0.0-rc0/MODULE.bazel",
-            "line": 16,
-            "column": 23
-          },
-          "imports": {
-            "rollup": "rollup"
-          },
-          "devImports": [],
-          "tags": [
-            {
-              "tagName": "toolchain",
-              "attributeValues": {
-                "name": "rollup",
-                "rollup_version": "v2.70.2"
-              },
-              "devDependency": false,
-              "location": {
-                "file": "https://bcr.bazel.build/modules/aspect_rules_rollup/2.0.0-rc0/MODULE.bazel",
-                "line": 17,
-                "column": 17
-              }
-            }
-          ],
-          "hasDevUseExtension": false,
-          "hasNonDevUseExtension": true
-        }
-      ],
-      "deps": {
-        "aspect_bazel_lib": "aspect_bazel_lib@2.7.7",
-        "aspect_rules_js": "aspect_rules_js@2.0.0-rc6",
-        "bazel_skylib": "bazel_skylib@1.7.1",
-        "rules_nodejs": "rules_nodejs@6.2.0",
-        "platforms": "platforms@0.0.10",
-        "bazel_tools": "bazel_tools@_",
-        "local_config_platform": "local_config_platform@_"
-      },
-      "repoSpec": {
-        "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-        "ruleClassName": "http_archive",
-        "attributes": {
-          "urls": [
-            "https://github.com/aspect-build/rules_rollup/releases/download/v2.0.0-rc0/rules_rollup-v2.0.0-rc0.tar.gz"
-          ],
-          "integrity": "sha256-4fG8Um+/iAhrC3+cJFWqGaS0zP3cdx4q6gTGVtLLpqE=",
-          "strip_prefix": "rules_rollup-2.0.0-rc0",
-          "remote_patches": {
-            "https://bcr.bazel.build/modules/aspect_rules_rollup/2.0.0-rc0/patches/module_dot_bazel_version.patch": "sha256-kRSNVEWq9EJorYDVbkSzeQZ9O6PuK4B3TImISdrAPtU="
           },
           "remote_patch_strip": 1
         }
@@ -3133,7 +3138,7 @@
       ],
       "deps": {
         "com_github_grpc_grpc": "grpc@1.56.3.bcr.1",
-        "io_grpc_grpc_java": "grpc-java@1.62.2",
+        "io_grpc_grpc_java": "grpc-java@1.64.0",
         "com_google_protobuf": "protobuf@23.1",
         "io_bazel_rules_go": "rules_go@0.46.0",
         "rules_proto": "rules_proto@6.0.0",
@@ -3426,6 +3431,125 @@
         }
       }
     },
+    "rules_java@7.6.1": {
+      "name": "rules_java",
+      "version": "7.6.1",
+      "key": "rules_java@7.6.1",
+      "repoName": "rules_java",
+      "executionPlatformsToRegister": [],
+      "toolchainsToRegister": [
+        "//toolchains:all",
+        "@local_jdk//:runtime_toolchain_definition",
+        "@local_jdk//:bootstrap_runtime_toolchain_definition",
+        "@remote_jdk8_linux_toolchain_config_repo//:all",
+        "@remote_jdk8_linux_aarch64_toolchain_config_repo//:all",
+        "@remote_jdk8_linux_s390x_toolchain_config_repo//:all",
+        "@remote_jdk8_macos_toolchain_config_repo//:all",
+        "@remote_jdk8_macos_aarch64_toolchain_config_repo//:all",
+        "@remote_jdk8_windows_toolchain_config_repo//:all",
+        "@remotejdk11_linux_toolchain_config_repo//:all",
+        "@remotejdk11_linux_aarch64_toolchain_config_repo//:all",
+        "@remotejdk11_linux_ppc64le_toolchain_config_repo//:all",
+        "@remotejdk11_linux_s390x_toolchain_config_repo//:all",
+        "@remotejdk11_macos_toolchain_config_repo//:all",
+        "@remotejdk11_macos_aarch64_toolchain_config_repo//:all",
+        "@remotejdk11_win_toolchain_config_repo//:all",
+        "@remotejdk11_win_arm64_toolchain_config_repo//:all",
+        "@remotejdk17_linux_toolchain_config_repo//:all",
+        "@remotejdk17_linux_aarch64_toolchain_config_repo//:all",
+        "@remotejdk17_linux_ppc64le_toolchain_config_repo//:all",
+        "@remotejdk17_linux_s390x_toolchain_config_repo//:all",
+        "@remotejdk17_macos_toolchain_config_repo//:all",
+        "@remotejdk17_macos_aarch64_toolchain_config_repo//:all",
+        "@remotejdk17_win_toolchain_config_repo//:all",
+        "@remotejdk17_win_arm64_toolchain_config_repo//:all",
+        "@remotejdk21_linux_toolchain_config_repo//:all",
+        "@remotejdk21_linux_aarch64_toolchain_config_repo//:all",
+        "@remotejdk21_linux_ppc64le_toolchain_config_repo//:all",
+        "@remotejdk21_linux_s390x_toolchain_config_repo//:all",
+        "@remotejdk21_macos_toolchain_config_repo//:all",
+        "@remotejdk21_macos_aarch64_toolchain_config_repo//:all",
+        "@remotejdk21_win_toolchain_config_repo//:all",
+        "@remotejdk21_win_arm64_toolchain_config_repo//:all"
+      ],
+      "extensionUsages": [
+        {
+          "extensionBzlFile": "@rules_java//java:extensions.bzl",
+          "extensionName": "toolchains",
+          "usingModule": "rules_java@7.6.1",
+          "location": {
+            "file": "https://bcr.bazel.build/modules/rules_java/7.6.1/MODULE.bazel",
+            "line": 20,
+            "column": 27
+          },
+          "imports": {
+            "remote_java_tools": "remote_java_tools",
+            "remote_java_tools_linux": "remote_java_tools_linux",
+            "remote_java_tools_windows": "remote_java_tools_windows",
+            "remote_java_tools_darwin_x86_64": "remote_java_tools_darwin_x86_64",
+            "remote_java_tools_darwin_arm64": "remote_java_tools_darwin_arm64",
+            "local_jdk": "local_jdk",
+            "remote_jdk8_linux_toolchain_config_repo": "remote_jdk8_linux_toolchain_config_repo",
+            "remote_jdk8_linux_aarch64_toolchain_config_repo": "remote_jdk8_linux_aarch64_toolchain_config_repo",
+            "remote_jdk8_linux_s390x_toolchain_config_repo": "remote_jdk8_linux_s390x_toolchain_config_repo",
+            "remote_jdk8_macos_toolchain_config_repo": "remote_jdk8_macos_toolchain_config_repo",
+            "remote_jdk8_macos_aarch64_toolchain_config_repo": "remote_jdk8_macos_aarch64_toolchain_config_repo",
+            "remote_jdk8_windows_toolchain_config_repo": "remote_jdk8_windows_toolchain_config_repo",
+            "remotejdk11_linux_toolchain_config_repo": "remotejdk11_linux_toolchain_config_repo",
+            "remotejdk11_linux_aarch64_toolchain_config_repo": "remotejdk11_linux_aarch64_toolchain_config_repo",
+            "remotejdk11_linux_ppc64le_toolchain_config_repo": "remotejdk11_linux_ppc64le_toolchain_config_repo",
+            "remotejdk11_linux_s390x_toolchain_config_repo": "remotejdk11_linux_s390x_toolchain_config_repo",
+            "remotejdk11_macos_toolchain_config_repo": "remotejdk11_macos_toolchain_config_repo",
+            "remotejdk11_macos_aarch64_toolchain_config_repo": "remotejdk11_macos_aarch64_toolchain_config_repo",
+            "remotejdk11_win_toolchain_config_repo": "remotejdk11_win_toolchain_config_repo",
+            "remotejdk11_win_arm64_toolchain_config_repo": "remotejdk11_win_arm64_toolchain_config_repo",
+            "remotejdk17_linux_toolchain_config_repo": "remotejdk17_linux_toolchain_config_repo",
+            "remotejdk17_linux_aarch64_toolchain_config_repo": "remotejdk17_linux_aarch64_toolchain_config_repo",
+            "remotejdk17_linux_ppc64le_toolchain_config_repo": "remotejdk17_linux_ppc64le_toolchain_config_repo",
+            "remotejdk17_linux_s390x_toolchain_config_repo": "remotejdk17_linux_s390x_toolchain_config_repo",
+            "remotejdk17_macos_toolchain_config_repo": "remotejdk17_macos_toolchain_config_repo",
+            "remotejdk17_macos_aarch64_toolchain_config_repo": "remotejdk17_macos_aarch64_toolchain_config_repo",
+            "remotejdk17_win_toolchain_config_repo": "remotejdk17_win_toolchain_config_repo",
+            "remotejdk17_win_arm64_toolchain_config_repo": "remotejdk17_win_arm64_toolchain_config_repo",
+            "remotejdk21_linux_toolchain_config_repo": "remotejdk21_linux_toolchain_config_repo",
+            "remotejdk21_linux_aarch64_toolchain_config_repo": "remotejdk21_linux_aarch64_toolchain_config_repo",
+            "remotejdk21_linux_ppc64le_toolchain_config_repo": "remotejdk21_linux_ppc64le_toolchain_config_repo",
+            "remotejdk21_linux_s390x_toolchain_config_repo": "remotejdk21_linux_s390x_toolchain_config_repo",
+            "remotejdk21_macos_toolchain_config_repo": "remotejdk21_macos_toolchain_config_repo",
+            "remotejdk21_macos_aarch64_toolchain_config_repo": "remotejdk21_macos_aarch64_toolchain_config_repo",
+            "remotejdk21_win_toolchain_config_repo": "remotejdk21_win_toolchain_config_repo",
+            "remotejdk21_win_arm64_toolchain_config_repo": "remotejdk21_win_arm64_toolchain_config_repo"
+          },
+          "devImports": [],
+          "tags": [],
+          "hasDevUseExtension": false,
+          "hasNonDevUseExtension": true
+        }
+      ],
+      "deps": {
+        "platforms": "platforms@0.0.10",
+        "rules_cc": "rules_cc@0.0.9",
+        "bazel_features": "bazel_features@1.13.0",
+        "bazel_skylib": "bazel_skylib@1.7.1",
+        "rules_proto": "rules_proto@6.0.0",
+        "rules_license": "rules_license@0.0.7",
+        "bazel_tools": "bazel_tools@_",
+        "local_config_platform": "local_config_platform@_"
+      },
+      "repoSpec": {
+        "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
+        "ruleClassName": "http_archive",
+        "attributes": {
+          "urls": [
+            "https://github.com/bazelbuild/rules_java/releases/download/7.6.1/rules_java-7.6.1.tar.gz"
+          ],
+          "integrity": "sha256-+K6e04h98C9A3p9PesOHPm3XpHH5zd9jlSU4uUtZrrM=",
+          "strip_prefix": "",
+          "remote_patches": {},
+          "remote_patch_strip": 0
+        }
+      }
+    },
     "bazel_features@1.13.0": {
       "name": "bazel_features",
       "version": "1.13.0",
@@ -3584,125 +3708,6 @@
         }
       }
     },
-    "rules_java@7.6.1": {
-      "name": "rules_java",
-      "version": "7.6.1",
-      "key": "rules_java@7.6.1",
-      "repoName": "rules_java",
-      "executionPlatformsToRegister": [],
-      "toolchainsToRegister": [
-        "//toolchains:all",
-        "@local_jdk//:runtime_toolchain_definition",
-        "@local_jdk//:bootstrap_runtime_toolchain_definition",
-        "@remote_jdk8_linux_toolchain_config_repo//:all",
-        "@remote_jdk8_linux_aarch64_toolchain_config_repo//:all",
-        "@remote_jdk8_linux_s390x_toolchain_config_repo//:all",
-        "@remote_jdk8_macos_toolchain_config_repo//:all",
-        "@remote_jdk8_macos_aarch64_toolchain_config_repo//:all",
-        "@remote_jdk8_windows_toolchain_config_repo//:all",
-        "@remotejdk11_linux_toolchain_config_repo//:all",
-        "@remotejdk11_linux_aarch64_toolchain_config_repo//:all",
-        "@remotejdk11_linux_ppc64le_toolchain_config_repo//:all",
-        "@remotejdk11_linux_s390x_toolchain_config_repo//:all",
-        "@remotejdk11_macos_toolchain_config_repo//:all",
-        "@remotejdk11_macos_aarch64_toolchain_config_repo//:all",
-        "@remotejdk11_win_toolchain_config_repo//:all",
-        "@remotejdk11_win_arm64_toolchain_config_repo//:all",
-        "@remotejdk17_linux_toolchain_config_repo//:all",
-        "@remotejdk17_linux_aarch64_toolchain_config_repo//:all",
-        "@remotejdk17_linux_ppc64le_toolchain_config_repo//:all",
-        "@remotejdk17_linux_s390x_toolchain_config_repo//:all",
-        "@remotejdk17_macos_toolchain_config_repo//:all",
-        "@remotejdk17_macos_aarch64_toolchain_config_repo//:all",
-        "@remotejdk17_win_toolchain_config_repo//:all",
-        "@remotejdk17_win_arm64_toolchain_config_repo//:all",
-        "@remotejdk21_linux_toolchain_config_repo//:all",
-        "@remotejdk21_linux_aarch64_toolchain_config_repo//:all",
-        "@remotejdk21_linux_ppc64le_toolchain_config_repo//:all",
-        "@remotejdk21_linux_s390x_toolchain_config_repo//:all",
-        "@remotejdk21_macos_toolchain_config_repo//:all",
-        "@remotejdk21_macos_aarch64_toolchain_config_repo//:all",
-        "@remotejdk21_win_toolchain_config_repo//:all",
-        "@remotejdk21_win_arm64_toolchain_config_repo//:all"
-      ],
-      "extensionUsages": [
-        {
-          "extensionBzlFile": "@rules_java//java:extensions.bzl",
-          "extensionName": "toolchains",
-          "usingModule": "rules_java@7.6.1",
-          "location": {
-            "file": "https://bcr.bazel.build/modules/rules_java/7.6.1/MODULE.bazel",
-            "line": 20,
-            "column": 27
-          },
-          "imports": {
-            "remote_java_tools": "remote_java_tools",
-            "remote_java_tools_linux": "remote_java_tools_linux",
-            "remote_java_tools_windows": "remote_java_tools_windows",
-            "remote_java_tools_darwin_x86_64": "remote_java_tools_darwin_x86_64",
-            "remote_java_tools_darwin_arm64": "remote_java_tools_darwin_arm64",
-            "local_jdk": "local_jdk",
-            "remote_jdk8_linux_toolchain_config_repo": "remote_jdk8_linux_toolchain_config_repo",
-            "remote_jdk8_linux_aarch64_toolchain_config_repo": "remote_jdk8_linux_aarch64_toolchain_config_repo",
-            "remote_jdk8_linux_s390x_toolchain_config_repo": "remote_jdk8_linux_s390x_toolchain_config_repo",
-            "remote_jdk8_macos_toolchain_config_repo": "remote_jdk8_macos_toolchain_config_repo",
-            "remote_jdk8_macos_aarch64_toolchain_config_repo": "remote_jdk8_macos_aarch64_toolchain_config_repo",
-            "remote_jdk8_windows_toolchain_config_repo": "remote_jdk8_windows_toolchain_config_repo",
-            "remotejdk11_linux_toolchain_config_repo": "remotejdk11_linux_toolchain_config_repo",
-            "remotejdk11_linux_aarch64_toolchain_config_repo": "remotejdk11_linux_aarch64_toolchain_config_repo",
-            "remotejdk11_linux_ppc64le_toolchain_config_repo": "remotejdk11_linux_ppc64le_toolchain_config_repo",
-            "remotejdk11_linux_s390x_toolchain_config_repo": "remotejdk11_linux_s390x_toolchain_config_repo",
-            "remotejdk11_macos_toolchain_config_repo": "remotejdk11_macos_toolchain_config_repo",
-            "remotejdk11_macos_aarch64_toolchain_config_repo": "remotejdk11_macos_aarch64_toolchain_config_repo",
-            "remotejdk11_win_toolchain_config_repo": "remotejdk11_win_toolchain_config_repo",
-            "remotejdk11_win_arm64_toolchain_config_repo": "remotejdk11_win_arm64_toolchain_config_repo",
-            "remotejdk17_linux_toolchain_config_repo": "remotejdk17_linux_toolchain_config_repo",
-            "remotejdk17_linux_aarch64_toolchain_config_repo": "remotejdk17_linux_aarch64_toolchain_config_repo",
-            "remotejdk17_linux_ppc64le_toolchain_config_repo": "remotejdk17_linux_ppc64le_toolchain_config_repo",
-            "remotejdk17_linux_s390x_toolchain_config_repo": "remotejdk17_linux_s390x_toolchain_config_repo",
-            "remotejdk17_macos_toolchain_config_repo": "remotejdk17_macos_toolchain_config_repo",
-            "remotejdk17_macos_aarch64_toolchain_config_repo": "remotejdk17_macos_aarch64_toolchain_config_repo",
-            "remotejdk17_win_toolchain_config_repo": "remotejdk17_win_toolchain_config_repo",
-            "remotejdk17_win_arm64_toolchain_config_repo": "remotejdk17_win_arm64_toolchain_config_repo",
-            "remotejdk21_linux_toolchain_config_repo": "remotejdk21_linux_toolchain_config_repo",
-            "remotejdk21_linux_aarch64_toolchain_config_repo": "remotejdk21_linux_aarch64_toolchain_config_repo",
-            "remotejdk21_linux_ppc64le_toolchain_config_repo": "remotejdk21_linux_ppc64le_toolchain_config_repo",
-            "remotejdk21_linux_s390x_toolchain_config_repo": "remotejdk21_linux_s390x_toolchain_config_repo",
-            "remotejdk21_macos_toolchain_config_repo": "remotejdk21_macos_toolchain_config_repo",
-            "remotejdk21_macos_aarch64_toolchain_config_repo": "remotejdk21_macos_aarch64_toolchain_config_repo",
-            "remotejdk21_win_toolchain_config_repo": "remotejdk21_win_toolchain_config_repo",
-            "remotejdk21_win_arm64_toolchain_config_repo": "remotejdk21_win_arm64_toolchain_config_repo"
-          },
-          "devImports": [],
-          "tags": [],
-          "hasDevUseExtension": false,
-          "hasNonDevUseExtension": true
-        }
-      ],
-      "deps": {
-        "platforms": "platforms@0.0.10",
-        "rules_cc": "rules_cc@0.0.9",
-        "bazel_features": "bazel_features@1.13.0",
-        "bazel_skylib": "bazel_skylib@1.7.1",
-        "rules_proto": "rules_proto@6.0.0",
-        "rules_license": "rules_license@0.0.7",
-        "bazel_tools": "bazel_tools@_",
-        "local_config_platform": "local_config_platform@_"
-      },
-      "repoSpec": {
-        "bzlFile": "@@bazel_tools//tools/build_defs/repo:http.bzl",
-        "ruleClassName": "http_archive",
-        "attributes": {
-          "urls": [
-            "https://github.com/bazelbuild/rules_java/releases/download/7.6.1/rules_java-7.6.1.tar.gz"
-          ],
-          "integrity": "sha256-+K6e04h98C9A3p9PesOHPm3XpHH5zd9jlSU4uUtZrrM=",
-          "strip_prefix": "",
-          "remote_patches": {},
-          "remote_patch_strip": 0
-        }
-      }
-    },
     "abseil-cpp@20230802.0.bcr.1": {
       "name": "abseil-cpp",
       "version": "20230802.0.bcr.1",
@@ -3797,7 +3802,7 @@
         "rules_proto": "rules_proto@6.0.0",
         "com_google_protobuf": "protobuf@23.1",
         "com_google_absl": "abseil-cpp@20230802.0.bcr.1",
-        "rules_pkg": "rules_pkg@0.9.1",
+        "rules_pkg": "rules_pkg@1.0.1",
         "platforms": "platforms@0.0.10",
         "bazel_tools": "bazel_tools@_",
         "local_config_platform": "local_config_platform@_"
