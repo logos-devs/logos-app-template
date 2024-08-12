@@ -7,19 +7,11 @@ use_extension("@bazel_tools//tools/module_profiles:git.bzl", "git_override")
 
 bazel_dep(name = "logos", version = "0.0.1")
 
-#git_override(
-#    module_name = "logos",
-#    remote = "git@github.com:logos-devs/logos.git",
-#    commit = "9fac6fe75265ea4ff0d57ccc0fd568b8ce7bed3e",
-#    init_submodules = True
-#)
-
-#logos = use_extension("@logos//:extension.bzl", "logos_deps")
-#use_repo(logos, maven="maven", logos_npm="npm")
-
-local_path_override(
+git_override(
     module_name = "logos",
-    path = "/home/trinque/src/logos",
+    remote = "git@github.com:logos-devs/logos.git",
+    commit = "c359327e1c0b4d89f566798ffb06192c64331816",
+    init_submodules = True
 )
 
 # aspect_bazel_lib

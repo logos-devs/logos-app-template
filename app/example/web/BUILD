@@ -25,7 +25,6 @@ swc(
         #"@logos//dev/logos/stack/aws:cognito_public_host_map",
     ],
     swcrc = "//:swc.config.js",
-    visibility = ["//visibility:public"],
 )
 
 rollup(
@@ -35,7 +34,7 @@ rollup(
     node_modules = "//:node_modules",
     output_dir = True,
     sourcemap = "true",
-    visibility = ["//dev/logos/service/client:__pkg__"],
+    visibility = ["//visibility:public"],
     deps = [
         ":web_library",
         "//:node_modules",

@@ -17,7 +17,7 @@ build --action_env=CXX=/usr/lib/llvm/18/bin/clang++
 build --repo_env=CC=/usr/lib/llvm/18/bin/clang
 build --repo_env=CXX=/usr/lib/llvm/18/bin/clang++
 run --incompatible_strict_action_env
-run --run_under='@logos//tools:bazel-env.sh'
+run --run_under='@logos//tools:bazel-env'
 
 common --incompatible_allow_tags_propagation
 

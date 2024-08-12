@@ -1,7 +1,9 @@
-java_library(
+java_binary(
     name = "module",
     srcs = ["ExampleModule.java"],
+    create_executable = False,
     plugins = ["@logos//dev/logos/app/register:module"],
+    visibility = ["//app/example:__pkg__"],
     deps = [
         "//app/example/service",
         "//app/example/storage:java_grpc",

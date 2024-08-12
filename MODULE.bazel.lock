@@ -1,6 +1,6 @@
 {
   "lockFileVersion": 6,
-  "moduleFileHash": "27274ba3d971771c63d2787ce3ff09bed711a7f5305f637b75a23d4d21ad03c1",
+  "moduleFileHash": "2a4e64809747b1d0d754a174b93eefb3d8217cdfdb7eb2fe95eb7123d3ec6789",
   "flags": {
     "cmdRegistries": [
       "https://bcr.bazel.build/"
@@ -13,8 +13,7 @@
     "compatibilityMode": "ERROR"
   },
   "localOverrideHashes": {
-    "bazel_tools": "1ae69322ac3823527337acf02016e8ee95813d8d356f47060255b8956fa642f0",
-    "logos": "6c813b3359d2b7a7be8270087ed74b73d52b39ac8c5cea7944c5fc2d35618b46"
+    "bazel_tools": "1ae69322ac3823527337acf02016e8ee95813d8d356f47060255b8956fa642f0"
   },
   "moduleDepGraph": {
     "<root>": {
@@ -46,7 +45,7 @@
           "usingModule": "<root>",
           "location": {
             "file": "@@//:MODULE.bazel",
-            "line": 38,
+            "line": 30,
             "column": 21
           },
           "imports": {},
@@ -58,7 +57,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@//:MODULE.bazel",
-                "line": 39,
+                "line": 31,
                 "column": 15
               }
             }
@@ -72,7 +71,7 @@
           "usingModule": "<root>",
           "location": {
             "file": "@@//:MODULE.bazel",
-            "line": 41,
+            "line": 33,
             "column": 20
           },
           "imports": {
@@ -93,7 +92,7 @@
               "devDependency": true,
               "location": {
                 "file": "@@//:MODULE.bazel",
-                "line": 46,
+                "line": 38,
                 "column": 23
               }
             }
@@ -107,7 +106,7 @@
           "usingModule": "<root>",
           "location": {
             "file": "@@//:MODULE.bazel",
-            "line": 54,
+            "line": 46,
             "column": 21
           },
           "imports": {
@@ -124,7 +123,7 @@
           "usingModule": "<root>",
           "location": {
             "file": "@@//:MODULE.bazel",
-            "line": 63,
+            "line": 55,
             "column": 27
           },
           "imports": {},
@@ -136,7 +135,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@//:MODULE.bazel",
-                "line": 64,
+                "line": 56,
                 "column": 16
               }
             }
@@ -150,7 +149,7 @@
           "usingModule": "<root>",
           "location": {
             "file": "@@//:MODULE.bazel",
-            "line": 72,
+            "line": 64,
             "column": 22
           },
           "imports": {
@@ -215,7 +214,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@//:MODULE.bazel",
-                "line": 73,
+                "line": 65,
                 "column": 14
               }
             }
@@ -261,6 +260,7 @@
             "grpc_web": "grpc_web",
             "kubectl_linux": "kubectl_linux",
             "kubectl_osx": "kubectl_osx",
+            "cert_manager": "cert_manager",
             "minikube_linux": "minikube_linux",
             "minikube_osx": "minikube_osx"
           },
@@ -346,6 +346,19 @@
             {
               "tagName": "@bazel_tools//tools/build_defs/repo:http.bzl%http_file",
               "attributeValues": {
+                "url": "https://github.com/cert-manager/cert-manager/releases/download/v1.15.2/cert-manager.yaml",
+                "name": "cert_manager"
+              },
+              "devDependency": false,
+              "location": {
+                "file": "@@logos~//:MODULE.bazel",
+                "line": 58,
+                "column": 10
+              }
+            },
+            {
+              "tagName": "@bazel_tools//tools/build_defs/repo:http.bzl%http_file",
+              "attributeValues": {
                 "executable": true,
                 "sha256": "e53d9e8c31f4c5f683182f5323d3527aa0725f713945c6d081cf71aa548ab388",
                 "url": "https://github.com/kubernetes/minikube/releases/download/v1.30.1/minikube-linux-amd64",
@@ -354,7 +367,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 58,
+                "line": 64,
                 "column": 10
               }
             },
@@ -369,7 +382,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 65,
+                "line": 71,
                 "column": 10
               }
             }
@@ -383,7 +396,7 @@
           "usingModule": "logos@_",
           "location": {
             "file": "@@logos~//:MODULE.bazel",
-            "line": 78,
+            "line": 84,
             "column": 22
           },
           "imports": {
@@ -411,6 +424,7 @@
                   "io.grpc:grpc-protobuf:1.64.0",
                   "io.grpc:grpc-stub:1.64.0",
                   "io.jsonwebtoken:jjwt:0.12.3",
+                  "io.kubernetes:client-java:21.0.0",
                   "javax.annotation:javax.annotation-api:1.3.2",
                   "javax.json:javax.json-api:1.1.4",
                   "org.apache.httpcomponents.client5:httpclient5:5.2.2",
@@ -429,6 +443,7 @@
                   "software.amazon.awssdk:ec2:2.26.23",
                   "software.amazon.awssdk:rds:2.26.23",
                   "software.amazon.awssdk:regions:2.26.23",
+                  "software.amazon.awssdk:route53:2.26.23",
                   "software.amazon.awssdk:s3:2.26.23",
                   "software.amazon.awssdk:secretsmanager:2.26.23",
                   "software.amazon.awssdk:sso:2.26.23",
@@ -449,7 +464,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 79,
+                "line": 85,
                 "column": 14
               }
             }
@@ -463,7 +478,7 @@
           "usingModule": "logos@_",
           "location": {
             "file": "@@logos~//:MODULE.bazel",
-            "line": 156,
+            "line": 164,
             "column": 33
           },
           "imports": {
@@ -482,7 +497,7 @@
           "usingModule": "logos@_",
           "location": {
             "file": "@@logos~//:MODULE.bazel",
-            "line": 191,
+            "line": 199,
             "column": 21
           },
           "imports": {
@@ -499,7 +514,7 @@
           "usingModule": "logos@_",
           "location": {
             "file": "@@logos~//:MODULE.bazel",
-            "line": 211,
+            "line": 219,
             "column": 27
           },
           "imports": {},
@@ -511,7 +526,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 212,
+                "line": 220,
                 "column": 16
               }
             }
@@ -525,7 +540,7 @@
           "usingModule": "logos@_",
           "location": {
             "file": "@@logos~//:MODULE.bazel",
-            "line": 220,
+            "line": 228,
             "column": 23
           },
           "imports": {},
@@ -539,7 +554,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 221,
+                "line": 229,
                 "column": 16
               }
             }
@@ -553,7 +568,7 @@
           "usingModule": "logos@_",
           "location": {
             "file": "@@logos~//:MODULE.bazel",
-            "line": 229,
+            "line": 237,
             "column": 20
           },
           "imports": {
@@ -562,7 +577,6 @@
             "distroless_java_container": "distroless_java_container",
             "console_container": "console_container",
             "nginx_container": "nginx_container",
-            "stolon_container": "stolon_container",
             "distroless_python_image": "distroless_python_image"
           },
           "devImports": [],
@@ -577,7 +591,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 230,
+                "line": 238,
                 "column": 9
               }
             },
@@ -594,7 +608,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 237,
+                "line": 245,
                 "column": 9
               }
             },
@@ -602,13 +616,15 @@
               "tagName": "pull",
               "attributeValues": {
                 "name": "distroless_java_container",
-                "digest": "sha256:c7151ad9a6787379ccf205e14b9ef18e0757e56d789c155269fc7b5f83d2a93e",
-                "image": "gcr.io/distroless/java17-debian11"
+                "image": "gcr.io/distroless/java17-debian11:debug",
+                "platforms": [
+                  "linux/amd64"
+                ]
               },
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 245,
+                "line": 253,
                 "column": 9
               }
             },
@@ -622,7 +638,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 252,
+                "line": 261,
                 "column": 9
               }
             },
@@ -636,21 +652,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 259,
-                "column": 9
-              }
-            },
-            {
-              "tagName": "pull",
-              "attributeValues": {
-                "name": "stolon_container",
-                "digest": "sha256:5d8a8292d9a008ba29cbe0285bd5d4d041a75945e1ffedb14b1bfbee5b2414fa",
-                "image": "docker.io/sorintlab/stolon"
-              },
-              "devDependency": false,
-              "location": {
-                "file": "@@logos~//:MODULE.bazel",
-                "line": 266,
+                "line": 268,
                 "column": 9
               }
             },
@@ -668,7 +670,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 273,
+                "line": 275,
                 "column": 9
               }
             }
@@ -682,7 +684,7 @@
           "usingModule": "logos@_",
           "location": {
             "file": "@@logos~//:MODULE.bazel",
-            "line": 290,
+            "line": 292,
             "column": 20
           },
           "imports": {
@@ -700,7 +702,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 293,
+                "line": 295,
                 "column": 19
               }
             },
@@ -713,7 +715,7 @@
               "devDependency": false,
               "location": {
                 "file": "@@logos~//:MODULE.bazel",
-                "line": 300,
+                "line": 302,
                 "column": 19
               }
             }
@@ -6843,17 +6845,6 @@
               "version": "1.7"
             }
           },
-          "stolon_container_single": {
-            "bzlFile": "@@rules_oci~//oci/private:pull.bzl",
-            "ruleClassName": "oci_pull",
-            "attributes": {
-              "scheme": "https",
-              "registry": "index.docker.io",
-              "repository": "sorintlab/stolon",
-              "identifier": "sha256:5d8a8292d9a008ba29cbe0285bd5d4d041a75945e1ffedb14b1bfbee5b2414fa",
-              "target_name": "stolon_container_single"
-            }
-          },
           "copy_to_directory_freebsd_amd64": {
             "bzlFile": "@@aspect_bazel_lib~//lib/private:copy_to_directory_toolchain.bzl",
             "ruleClassName": "copy_to_directory_platform_repo",
@@ -7098,17 +7089,6 @@
               "crane_version": "v0.14.0"
             }
           },
-          "distroless_java_container_single": {
-            "bzlFile": "@@rules_oci~//oci/private:pull.bzl",
-            "ruleClassName": "oci_pull",
-            "attributes": {
-              "scheme": "https",
-              "registry": "gcr.io",
-              "repository": "distroless/java17-debian11",
-              "identifier": "sha256:c7151ad9a6787379ccf205e14b9ef18e0757e56d789c155269fc7b5f83d2a93e",
-              "target_name": "distroless_java_container_single"
-            }
-          },
           "jq": {
             "bzlFile": "@@aspect_bazel_lib~//lib/private:jq_toolchain.bzl",
             "ruleClassName": "jq_host_alias_repo",
@@ -7136,6 +7116,18 @@
               },
               "bzlmod_repository": "envoy_image_old",
               "reproducible": true
+            }
+          },
+          "distroless_java_container_linux_amd64": {
+            "bzlFile": "@@rules_oci~//oci/private:pull.bzl",
+            "ruleClassName": "oci_pull",
+            "attributes": {
+              "scheme": "https",
+              "registry": "gcr.io",
+              "repository": "distroless/java17-debian11",
+              "identifier": "debug",
+              "platform": "linux/amd64",
+              "target_name": "distroless_java_container_linux_amd64"
             }
           },
           "copy_to_directory_linux_amd64": {
@@ -7208,9 +7200,10 @@
               "scheme": "https",
               "registry": "gcr.io",
               "repository": "distroless/java17-debian11",
-              "identifier": "sha256:c7151ad9a6787379ccf205e14b9ef18e0757e56d789c155269fc7b5f83d2a93e",
-              "platforms": {},
-              "platform": "@@rules_oci~//oci:distroless_java_container_single",
+              "identifier": "debug",
+              "platforms": {
+                "@@platforms//cpu:x86_64": "@distroless_java_container_linux_amd64"
+              },
               "bzlmod_repository": "distroless_java_container",
               "reproducible": true
             }
@@ -7229,21 +7222,6 @@
             "attributes": {
               "platform": "windows_amd64",
               "version": "4.25.2"
-            }
-          },
-          "stolon_container": {
-            "bzlFile": "@@rules_oci~//oci/private:pull.bzl",
-            "ruleClassName": "oci_alias",
-            "attributes": {
-              "target_name": "stolon_container",
-              "scheme": "https",
-              "registry": "index.docker.io",
-              "repository": "sorintlab/stolon",
-              "identifier": "sha256:5d8a8292d9a008ba29cbe0285bd5d4d041a75945e1ffedb14b1bfbee5b2414fa",
-              "platforms": {},
-              "platform": "@@rules_oci~//oci:stolon_container_single",
-              "bzlmod_repository": "stolon_container",
-              "reproducible": true
             }
           },
           "alpine_image_single": {

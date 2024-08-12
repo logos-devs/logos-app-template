@@ -1,4 +1,4 @@
-package app.summer.module;
+package app.example.module;
 
 import app.example.service.ExampleStorageService;
 import app.example.service.FrontendService;
