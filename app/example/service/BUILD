@@ -16,7 +16,6 @@ java_library(
         "@com_google_protobuf//:protobuf_java",
         "@io_grpc_grpc_java//api",
         "@io_grpc_grpc_java//stub",
-        "@logos//app/auth/user",
         "@logos//dev/logos/service",
         "@logos//dev/logos/service/storage:storage_library",
         "@logos//dev/logos/service/storage/pg",
