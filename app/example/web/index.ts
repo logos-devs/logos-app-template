@@ -1,13 +1,15 @@
 import "reflect-metadata";
+import '@spectrum-web-components/styles/all-medium-light.css';
+import '@spectrum-web-components/styles/typography.css';
+import '@spectrum-web-components/theme/express/theme-light.js';
+import '@spectrum-web-components/theme/express/scale-medium.js';
+import '@spectrum-web-components/theme/sp-theme.js';
+
 //import 'app/auth/web/module/auth-module';
-import './components/base-router';
+import './components/example-app';
 
-import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
-
-document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
-
-customElements.whenDefined('base-router').then(() => {
+customElements.whenDefined('example-app').then(() => {
     document.body.appendChild(
-        document.createElement('base-router')
+        document.createElement('example-app')
     );
 });

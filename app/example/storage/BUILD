@@ -1,4 +1,4 @@
-load("@logos//dev/logos/service/storage/pg/exporter:schema_export.bzl", "java_storage_service", "schema_export", "schema_proto_src")  #"storage_grpc_web_library", "storage_java_proto_library")
+load("@logos//dev/logos/service/storage/pg/exporter:schema_export.bzl", "java_storage_service", "schema_export", "schema_proto_src")
 load("@logos//bzl:proto.bzl", "java_grpc_library", "js_grpc_client")
 
 TABLES = {

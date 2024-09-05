@@ -5,7 +5,7 @@ import "@material/web/labs/navigationtab/navigation-tab";
 import "dev/logos/service/client/web/components/router-path";
 import {css, html, LitElement} from 'lit';
 import {customElement, query} from "lit/decorators.js";
-import "./module/summer-module";
+import "./module/example-module";
 
 
 @customElement('frame-root')

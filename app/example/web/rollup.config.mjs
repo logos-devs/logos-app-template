@@ -1,4 +1,5 @@
 import terser from '@rollup/plugin-terser';
+import css from "rollup-plugin-import-css";
 import commonjs from '@rollup/plugin-commonjs';
 import includePaths from 'rollup-plugin-includepaths';
 import json from '@rollup/plugin-json';
@@ -24,6 +25,7 @@ const allowedWarnings = {
 export default {
     plugins: [
         commonjs(), // needed by google-libphonenumber
+        css(),
         nodeResolve({
             browser: true
         }),
@@ -66,7 +68,7 @@ export default {
 <html${makeHtmlAttributes(attributes.html)}>
   <head>
     <meta charset="utf-8">
-    <title>summer.app</title>
+    <title>example.logos.dev</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Roboto+Mono:wght@300;400;500&display=swap"
           rel="stylesheet">

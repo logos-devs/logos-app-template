@@ -3,16 +3,31 @@ module(
     version = "0.0.1",
 )
 
+bazel_dep(name = "platforms", version = "0.0.10")
+
 use_extension("@bazel_tools//tools/module_profiles:git.bzl", "git_override")
 
 bazel_dep(name = "logos", version = "0.0.1")
+#git_override(
+#    module_name = "logos",
+#    commit = "04cf203089306308bc3bedc144d4c1d4c049c17f",
+#    init_submodules = True,
+#    remote = "git@github.com:logos-devs/logos.git",
+#)
 
-git_override(
+local_path_override(
     module_name = "logos",
-    remote = "git@github.com:logos-devs/logos.git",
-    commit = "c359327e1c0b4d89f566798ffb06192c64331816",
-    init_submodules = True
+    path = "/home/trinque/src/logos",
 )
+
+#bazel_dep(name = "logos_auth_cognito", version = "0.0.1")
+
+#git_override(
+#    module_name = "logos_auth_cognito",
+#    #commit = "",
+#    init_submodules = True,
+#    remote = "git@github.com:logos-devs/logos-auth-cognito.git",
+#)
 
 # aspect_bazel_lib
 bazel_dep(
@@ -21,11 +36,11 @@ bazel_dep(
 )
 
 # grpc-java
-bazel_dep(name = "grpc-java", version = "1.62.2", repo_name = "io_grpc_grpc_java")
+bazel_dep(name = "grpc-java", version = "1.64.0", repo_name = "io_grpc_grpc_java")
 
 # pnpm
 bazel_dep(name = "rules_nodejs", version = "6.2.0")
-bazel_dep(name = "aspect_rules_js", version = "2.0.0-rc6")
+bazel_dep(name = "aspect_rules_js", version = "2.0.1")
 
 node = use_extension("@rules_nodejs//nodejs:extensions.bzl", "node")
 node.toolchain()
@@ -33,13 +48,13 @@ node.toolchain()
 npm = use_extension(
     "@aspect_rules_js//npm:extensions.bzl",
     "npm",
-    dev_dependency = True,
+    #dev_dependency = True,
 )
 npm.npm_translate_lock(
     name = "npm",
+    npmrc = "//:.npmrc",
     pnpm_lock = "//:pnpm-lock.yaml",
     verify_node_modules_ignored = "//:.bazelignore",
-    npmrc = "@//:.npmrc"
 )
 use_repo(npm, "npm")
 
@@ -65,50 +80,13 @@ maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 maven.install(
     name = "maven_logos",
     artifacts = [
-        "com.auth0:java-jwt:4.4.0",
-        "com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.15.2",
-        "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.15.2",
-        "com.google.code.gson:gson:2.10.1",
-        "com.google.inject:guice:7.0.0",
-        "com.mysema.commons:mysema-commons-lang:0.2.4",
-        "com.squareup:javapoet:1.13.0",
-        "com.yubico:webauthn-server-core:2.5.0",
-        "com.zaxxer:HikariCP:5.0.1",
-        "dnsjava:dnsjava:3.5.2",
-        "io.grpc:grpc-netty-shaded:1.64.0",
-        "io.grpc:grpc-protobuf:1.64.0",
-        "io.grpc:grpc-stub:1.64.0",
-        "io.jsonwebtoken:jjwt:0.12.3",
-        "javax.annotation:javax.annotation-api:1.3.2",
-        "javax.json:javax.json-api:1.1.4",
-        "org.apache.httpcomponents.client5:httpclient5:5.2.2",
-        "org.apache.tomcat:annotations-api:6.0.53",
-        "org.eclipse.jgit:org.eclipse.jgit:6.6.0.202305301015-r",
-        "org.jdbi:jdbi3-core:3.39.1",
-        "org.jdbi:jdbi3-postgres:3.35.0",
-        "org.junit.jupiter:junit-jupiter-api:5.9.3",
-        "org.postgresql:postgresql:42.6.0",
-        "org.reactivestreams:reactive-streams:1.0.4",
-        "org.reflections:reflections:0.10.2",
-        "org.slf4j:slf4j-api:2.0.7",
-        "org.slf4j:slf4j-simple:2.0.7",
-        "software.amazon.awssdk:auth:2.26.23",
-        "software.amazon.awssdk:cognitoidentityprovider:2.26.23",
-        "software.amazon.awssdk:ec2:2.26.23",
-        "software.amazon.awssdk:rds:2.26.23",
-        "software.amazon.awssdk:regions:2.26.23",
-        "software.amazon.awssdk:s3:2.26.23",
-        "software.amazon.awssdk:secretsmanager:2.26.23",
-        "software.amazon.awssdk:sso:2.26.23",
-        "software.amazon.awssdk:ssooidc:2.26.23",
-        "software.amazon.awssdk:sts:2.26.23",
-        "software.amazon.awssdk:utils:2.26.23",
+        # deps from the framework are merged with any deps specified here
     ],
     fail_if_repin_required = True,
     fetch_javadoc = True,
     fetch_sources = True,
     generate_compat_repositories = True,
-    # bazel run @unpinned_maven//:pin
+    # REPIN=1 bazel run @maven_logos//:pin
     lock_file = "//:maven_install.json",
     repositories = [
         "https://repo.maven.apache.org/maven2/",

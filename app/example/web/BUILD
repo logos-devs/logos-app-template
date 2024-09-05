@@ -3,22 +3,34 @@ load("@aspect_rules_rollup//rollup:defs.bzl", "rollup")
 load("@aspect_rules_swc//swc:defs.bzl", "swc")
 load("@npm//:@web/dev-server/package_json.bzl", wds = "bin")
 
+NPM_PACKAGES = [
+    "//:node_modules/@adobe/lit-mobx",
+    "//:node_modules/@material/web",
+    "//:node_modules/@spectrum-web-components/action-menu",
+    "//:node_modules/@spectrum-web-components/card",
+    "//:node_modules/@spectrum-web-components/icon",
+    "//:node_modules/@spectrum-web-components/icons",
+    "//:node_modules/@spectrum-web-components/icons-workflow",
+    "//:node_modules/@spectrum-web-components/overlay",
+    "//:node_modules/@spectrum-web-components/styles",
+    "//:node_modules/@spectrum-web-components/theme",
+    "//:node_modules/@spectrum-web-components/top-nav",
+    "//:node_modules/@types/node",
+    "//:node_modules/grpc-web",
+    "//:node_modules/inversify",
+    "//:node_modules/inversify-inject-decorators",
+    "//:node_modules/lit",
+    "//:node_modules/lit-html",
+    "//:node_modules/path-to-regexp",
+    "//:node_modules/reflect-metadata",
+]
+
 swc(
     name = "web_library",
     srcs = glob(["**/*.ts"]) + [
         "@logos//dev/logos/web:src",
     ],
-    data = [
-        "//:node_modules/@adobe/lit-mobx",
-        "//:node_modules/@material/web",
-        "//:node_modules/@types/node",
-        "//:node_modules/grpc-web",
-        "//:node_modules/inversify",
-        "//:node_modules/inversify-inject-decorators",
-        "//:node_modules/lit",
-        "//:node_modules/lit-html",
-        "//:node_modules/path-to-regexp",
-        "//:node_modules/reflect-metadata",
+    data = NPM_PACKAGES + [
         #"//app/auth/web",
         "//app/example/proto:grpc_web",
         "//app/example/storage:grpc_web",
@@ -35,9 +47,16 @@ rollup(
     output_dir = True,
     sourcemap = "true",
     visibility = ["//visibility:public"],
-    deps = [
+    deps = NPM_PACKAGES + [
         ":web_library",
-        "//:node_modules",
+        "//:node_modules/@rollup/plugin-commonjs",
+        "//:node_modules/@rollup/plugin-html",
+        "//:node_modules/@rollup/plugin-json",
+        "//:node_modules/@rollup/plugin-node-resolve",
+        "//:node_modules/@rollup/plugin-replace",
+        "//:node_modules/@rollup/plugin-terser",
+        "//:node_modules/rollup-plugin-import-css",
+        "//:node_modules/rollup-plugin-includepaths",
     ],
 )
 
