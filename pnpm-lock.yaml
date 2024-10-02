@@ -59,7 +59,7 @@ dependencies:
   '@spectrum-web-components/overlay':
     specifier: 0.46.0
     version: 0.46.0
-  '@spectrum-web-components/sidenav':
+  '@spectrum-web-components/popover':
     specifier: 0.46.0
     version: 0.46.0
   '@spectrum-web-components/styles':
@@ -122,6 +122,15 @@ dependencies:
   rollup-plugin-includepaths:
     specifier: 0.2.4
     version: 0.2.4
+  rollup-plugin-sourcemaps2:
+    specifier: 0.4.1
+    version: 0.4.1(@types/node@20.14.2)(rollup@4.18.0)
+  rollup-plugin-tsconfig-paths:
+    specifier: 1.5.2
+    version: 1.5.2(rollup@4.18.0)(typescript@5.4.5)
+  rollup-plugin-typescript-paths:
+    specifier: 1.5.0
+    version: 1.5.0(typescript@5.4.5)
   ts-loader:
     specifier: 9.5.1
     version: 9.5.1(typescript@5.4.5)(webpack@5.93.0)
@@ -835,14 +844,6 @@ packages:
       '@lit-labs/observers': 2.0.3
       '@spectrum-web-components/base': 0.46.0
       focus-visible: 5.2.1
-    dev: false
-
-  /@spectrum-web-components/sidenav@0.46.0:
-    resolution: {integrity: sha512-yj/0Ly/5lHZQFbBvSA0mi0eTOKU0/nxXlO3zD76ZWEYRTefzF+lK0AoS7bLwnHYVdD1QiieTcSAKB/ruj1UDrw==}
-    dependencies:
-      '@spectrum-web-components/base': 0.46.0
-      '@spectrum-web-components/reactive-controllers': 0.46.0
-      '@spectrum-web-components/shared': 0.46.0
     dev: false
 
   /@spectrum-web-components/styles@0.46.0:
@@ -2496,6 +2497,40 @@ packages:
     resolution: {integrity: sha512-iZen+XKVExeCzk7jeSZPJKL7B67slZNr8GXSC5ROBXtDGXDBH8wdjMfdNW5hf9kPt+tHyIvWh3wlE9bPrZL24g==}
     dev: false
 
+  /rollup-plugin-sourcemaps2@0.4.1(@types/node@20.14.2)(rollup@4.18.0):
+    resolution: {integrity: sha512-PMWd74BQanTdpWvMMapxBDSgf/L+osxjMI5qIAz/nZ5Ob9+op+bdrZkz6/WiEBmMdcJYjasaTcThoBKBcgCA+w==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@types/node': '>=18.0.0'
+      rollup: '>=4'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+    dependencies:
+      '@rollup/pluginutils': 5.1.0(rollup@4.18.0)
+      '@types/node': 20.14.2
+      rollup: 4.18.0
+    dev: false
+
+  /rollup-plugin-tsconfig-paths@1.5.2(rollup@4.18.0)(typescript@5.4.5):
+    resolution: {integrity: sha512-tyS7u2Md0eXKwbDfTuDDa1izciwqhOZsHzX7zYc5gKC1L7q5ozdSt+q1jjtD1dDqWyjrt8lZoiLtOQGhMHh1OQ==}
+    peerDependencies:
+      rollup: ^2 || ^3 || ^4
+    dependencies:
+      rollup: 4.18.0
+      typescript-paths: 1.5.1(typescript@5.4.5)
+    transitivePeerDependencies:
+      - typescript
+    dev: false
+
+  /rollup-plugin-typescript-paths@1.5.0(typescript@5.4.5):
+    resolution: {integrity: sha512-zly2aiGNjYJNq5YUi6eyGrQnCYUQ8b5czOtHZIGriwG9U3Ba2F9hlSklafXCdsNulK/IlNmE0Kzj0h+fVV32pA==}
+    peerDependencies:
+      typescript: '>=3.4'
+    dependencies:
+      typescript: 5.4.5
+    dev: false
+
   /rollup@4.18.0:
     resolution: {integrity: sha512-QmJz14PX3rzbJCN1SG4Xe/bAAX2a6NpCP8ab2vfu2GiUr8AQcr2nCV/oEO3yneFarB67zk8ShlIyWb2LGTb3Sg==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
@@ -2796,6 +2831,14 @@ packages:
       media-typer: 0.3.0
       mime-types: 2.1.35
     dev: true
+
+  /typescript-paths@1.5.1(typescript@5.4.5):
+    resolution: {integrity: sha512-lYErSLCON2MSplVV5V/LBgD4UNjMgY3guATdFCZY2q1Nr6OZEu4q6zX/rYMsG1TaWqqQSszg6C9EU7AGWMDrIw==}
+    peerDependencies:
+      typescript: ^4.7.2 || ^5
+    dependencies:
+      typescript: 5.4.5
+    dev: false
 
   /typescript@5.4.5:
     resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}

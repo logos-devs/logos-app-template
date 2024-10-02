@@ -8,26 +8,22 @@ bazel_dep(name = "platforms", version = "0.0.10")
 use_extension("@bazel_tools//tools/module_profiles:git.bzl", "git_override")
 
 bazel_dep(name = "logos", version = "0.0.1")
-#git_override(
-#    module_name = "logos",
-#    commit = "04cf203089306308bc3bedc144d4c1d4c049c17f",
-#    init_submodules = True,
-#    remote = "git@github.com:logos-devs/logos.git",
-#)
 
-local_path_override(
+git_override(
     module_name = "logos",
-    path = "/home/trinque/src/logos",
+    commit = "f7429b9b6f66641c253118eee97ea0efc316fac0",
+    init_submodules = True,
+    remote = "git@github.com:logos-devs/logos.git",
 )
 
-#bazel_dep(name = "logos_auth_cognito", version = "0.0.1")
+bazel_dep(name = "logos-app-auth-cognito", version = "0.0.1")
 
-#git_override(
-#    module_name = "logos_auth_cognito",
-#    #commit = "",
-#    init_submodules = True,
-#    remote = "git@github.com:logos-devs/logos-auth-cognito.git",
-#)
+git_override(
+    module_name = "logos-app-auth-cognito",
+    commit = "e74ad526ca41bce7883ca9448acffe28be8c7178",
+    init_submodules = True,
+    remote = "git@github.com:logos-devs/logos-app-auth-cognito.git",
+)
 
 # aspect_bazel_lib
 bazel_dep(
@@ -61,11 +57,18 @@ use_repo(npm, "npm")
 pnpm = use_extension("@aspect_rules_js//npm:extensions.bzl", "pnpm")
 use_repo(pnpm, "pnpm")
 
+# rules_ts
+bazel_dep(name = "aspect_rules_ts", version = "3.1.0")
+
+rules_ts_ext = use_extension("@aspect_rules_ts//ts:extensions.bzl", "ext")
+rules_ts_ext.deps(ts_version_from = "//:package.json")
+use_repo(rules_ts_ext, "npm_typescript")
+
 # aspect_rules_swc
-bazel_dep(name = "aspect_rules_swc", version = "2.0.0-rc1")
+bazel_dep(name = "aspect_rules_swc", version = "2.0.0")
 
 # rules_rollup
-bazel_dep(name = "aspect_rules_rollup", version = "2.0.0-rc0")
+bazel_dep(name = "aspect_rules_rollup", version = "2.0.0")
 
 rollup_ext = use_extension("@aspect_rules_rollup//rollup:extensions.bzl", "ext")
 rollup_ext.deps()

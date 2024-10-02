@@ -5,11 +5,10 @@ import '@spectrum-web-components/theme/express/theme-light.js';
 import '@spectrum-web-components/theme/express/scale-medium.js';
 import '@spectrum-web-components/theme/sp-theme.js';
 
-//import 'app/auth/web/module/auth-module';
+//import 'app/auth/cognito/web/module/auth-module';
+import './module/example-module';
 import './components/example-app';
 
-customElements.whenDefined('example-app').then(() => {
-    document.body.appendChild(
-        document.createElement('example-app')
-    );
-});
+document.body.appendChild(
+    document.createElement('example-app')
+);

@@ -1,6 +1,7 @@
 load("@aspect_rules_js//js:defs.bzl", "js_run_devserver")
 load("@aspect_rules_rollup//rollup:defs.bzl", "rollup")
 load("@aspect_rules_swc//swc:defs.bzl", "swc")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
 load("@npm//:@web/dev-server/package_json.bzl", wds = "bin")
 
 NPM_PACKAGES = [
@@ -9,10 +10,10 @@ NPM_PACKAGES = [
     "//:node_modules/@spectrum-web-components/action-menu",
     "//:node_modules/@spectrum-web-components/card",
     "//:node_modules/@spectrum-web-components/icon",
-    "//:node_modules/@spectrum-web-components/icons",
     "//:node_modules/@spectrum-web-components/icons-workflow",
-    "//:node_modules/@spectrum-web-components/overlay",
     "//:node_modules/@spectrum-web-components/styles",
+    "//:node_modules/@spectrum-web-components/overlay",
+    "//:node_modules/@spectrum-web-components/popover",
     "//:node_modules/@spectrum-web-components/theme",
     "//:node_modules/@spectrum-web-components/top-nav",
     "//:node_modules/@types/node",
@@ -25,30 +26,40 @@ NPM_PACKAGES = [
     "//:node_modules/reflect-metadata",
 ]
 
-swc(
+ts_project(
     name = "web_library",
-    srcs = glob(["**/*.ts"]) + [
-        "@logos//dev/logos/web:src",
+    srcs = [
+        "components/example-app.ts",
+        "index.ts",
+        "module/example-module.ts",
     ],
-    data = NPM_PACKAGES + [
-        #"//app/auth/web",
+    composite = True,
+    declaration = True,
+    resolve_json_module = True,
+    source_map = True,
+    transpiler = "tsc",
+    tsconfig = "//:tsconfig",
+    deps = NPM_PACKAGES + [
         "//app/example/proto:grpc_web",
         "//app/example/storage:grpc_web",
-        #"@logos//dev/logos/stack/aws:cognito_public_host_map",
+        "@logos-app-auth-cognito//app/auth/cognito/web",
+        "@logos//dev/logos/web",
     ],
-    swcrc = "//:swc.config.js",
 )
 
 rollup(
     name = "web",
+    srcs = [
+        ":web_library",
+        "//:tsconfig",
+    ],
     config_file = ":rollup.config.mjs",
     entry_point = "index.js",
     node_modules = "//:node_modules",
     output_dir = True,
-    sourcemap = "true",
+    sourcemap = "inline",
     visibility = ["//visibility:public"],
     deps = NPM_PACKAGES + [
-        ":web_library",
         "//:node_modules/@rollup/plugin-commonjs",
         "//:node_modules/@rollup/plugin-html",
         "//:node_modules/@rollup/plugin-json",
@@ -57,6 +68,9 @@ rollup(
         "//:node_modules/@rollup/plugin-terser",
         "//:node_modules/rollup-plugin-import-css",
         "//:node_modules/rollup-plugin-includepaths",
+        "//:node_modules/rollup-plugin-sourcemaps2",
+        "//:node_modules/rollup-plugin-typescript-paths",
+        "//:node_modules/typescript",
     ],
 )
 

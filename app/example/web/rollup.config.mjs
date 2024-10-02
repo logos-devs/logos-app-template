@@ -7,6 +7,8 @@ import {makeHtmlAttributes} from '@rollup/plugin-html';
 import html from '@rollup/plugin-html';
 import replace from '@rollup/plugin-replace';
 import nodeResolve from '@rollup/plugin-node-resolve';
+import sourcemaps from 'rollup-plugin-sourcemaps2';
+import {typescriptPaths} from 'rollup-plugin-typescript-paths';
 
 
 const allowedWarnings = {
@@ -27,7 +29,8 @@ export default {
         commonjs(), // needed by google-libphonenumber
         css(),
         nodeResolve({
-            browser: true
+            browser: true,
+            extensions: [".tsx", ".ts", ".jsx", ".js", ".json"]
         }),
         includePaths({paths: ["./"]}),
         replace({
@@ -37,7 +40,9 @@ export default {
             }
         }),
         //terser(),
+        typescriptPaths(),
         json(),
+        sourcemaps(),
         html({
             title: "logos",
             publicPath: "/",
@@ -78,8 +83,8 @@ export default {
 
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="translucent">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="referrer" content="no-referrer">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#292929" media="(prefers-color-scheme: dark)">
