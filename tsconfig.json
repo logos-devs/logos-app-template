@@ -29,20 +29,11 @@
     "paths": {
       "app/*": [
         "bazel-bin/app/*",
-        "app/*",
-        "external/logos~/app/*",
-        "external/logos-app-auth-cognito~/app/*"
+        "app/*"
       ],
       "dev/*": [
         "bazel-bin/dev/*",
-        "dev/*",
-        "external/logos~/dev/*",
-        "external/logos-app-auth-cognito~/dev/*"
-      ],
-      "external/*": [
-        "bazel-bin/external/*",
-        "external/*",
-        "../../external/*"
+        "dev/*"
       ]
     }
   }

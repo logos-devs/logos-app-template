@@ -1,4 +1,6 @@
-java_library(
+load("@logos//bzl:defs.bzl", "service")
+
+service(
     name = "service",
     srcs = [
         "ExampleStorageService.java",
@@ -13,14 +15,5 @@ java_library(
         "//app/example/storage:java_grpc",
         "//app/example/storage:java_proto",
         "//app/example/storage:java_storage_service",
-        "@com_google_protobuf//:protobuf_java",
-        "@io_grpc_grpc_java//api",
-        "@io_grpc_grpc_java//stub",
-        "@logos//dev/logos/service",
-        "@logos//dev/logos/service/storage:storage_library",
-        "@logos//dev/logos/service/storage/pg",
-        "@logos//dev/logos/service/storage/validator",
-        "@logos//dev/logos/user",
-        "@maven_logos//:com_google_inject_guice",
     ],
 )

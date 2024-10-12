@@ -1,5 +1,4 @@
-load("@logos//dev/logos/service/storage/pg/exporter:schema_export.bzl", "java_storage_service", "schema_export", "schema_proto_src")
-load("@logos//bzl:proto.bzl", "java_grpc_library", "js_grpc_client")
+load("@logos//bzl:defs.bzl", "java_grpc_library", "js_grpc_client", "schema_export", "schema_proto_src", "storage_service")
 
 TABLES = {
     "example_app": [
@@ -48,7 +47,7 @@ js_grpc_client(
     visibility = ["//app/example:__subpackages__"],
 )
 
-java_storage_service(
+storage_service(
     name = "java_storage_service",
     schema_export = ":schema_export",
     tables = TABLES,

@@ -1,18 +1,19 @@
 import {css, html, LitElement, CSSResult, TemplateResult} from "lit";
 import {customElement} from "lit/decorators.js";
 
-import '@spectrum-web-components/action-menu/sp-action-menu.js';
+import '@spectrum-web-components/styles/all-medium-light.css';
+import '@spectrum-web-components/styles/typography.css';
+import '@spectrum-web-components/theme/src/themes.js';
+import '@spectrum-web-components/theme/sp-theme.js';
 import '@spectrum-web-components/card/sp-card.js';
-import '@spectrum-web-components/icon/sp-icon.js';
 import '@spectrum-web-components/icons-workflow/icons/sp-icon-arrow-up.js';
 import '@spectrum-web-components/icons-workflow/icons/sp-icon-arrow-down.js';
 import '@spectrum-web-components/top-nav/sp-top-nav.js';
 import '@spectrum-web-components/top-nav/sp-top-nav-item.js';
-import '@spectrum-web-components/overlay/sp-overlay.js';
-import {Feed, GetFeedRequest, GetFeedResponse} from "app/example/proto/feed_pb";
+import {GetFeedRequest, GetFeedResponse} from "app/example/proto/feed_pb";
 import {FeedServicePromiseClient} from "app/example/proto/feed_grpc_web_pb";
-import {lazyInject} from "external/logos~/dev/logos/web/module/app-module";
-import "external/logos-app-auth-cognito~/app/auth/cognito/web/components/profile-button";
+import {lazyInject} from "@logos/web/dev/logos/web/module/app-module";
+import "@logos/app-auth-cognito/app/auth/cognito/web/components/profile-button";
 
 
 @customElement("example-app")
@@ -78,7 +79,7 @@ export class ExampleApp extends LitElement {
         ];
 
         return html`
-            <sp-theme system="express" color="light" scale="medium">
+            <sp-theme color="light" scale="medium">
                 <sp-top-nav>
                     <sp-top-nav-item id="title">
                         Greatest Fictional, Fictional Works of All Time

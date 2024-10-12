@@ -1,4 +1,4 @@
-load("@logos//bzl:pg_migrate.bzl", "pg_migrate")
+load("@logos//bzl:defs.bzl", "pg_migrate")
 
 pg_migrate(
     name = "migrations",
