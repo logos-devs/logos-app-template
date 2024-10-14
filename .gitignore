@@ -4,7 +4,6 @@
 /.eclipse
 /.ijwb/.blaze/modules/.workspace.iml
 /.ijwb/.idea/libraries
-/.pnpm-store
 /bazel-*
 /cfg/*
 /jobs/*

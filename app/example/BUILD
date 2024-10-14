@@ -5,6 +5,7 @@ aws(
     name = "aws",
     visibility = ["//visibility:public"],
     deps = [
+        # TODO : clarify that this is pulling stacks from the module, or merge with the next rule impl
         "@logos-app-auth-cognito//app/auth/cognito/module",
     ],
 )
